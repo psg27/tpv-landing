@@ -1,0 +1,49 @@
+---
+// Features.astro
+const features = [
+  {
+    title: "Comercio General y Restaurantes",
+    description: "Retail y modo restaurante con manejo de mesas. Integración con escáneres e impresión de tickets con QZ Tray.",
+    icon: `<svg class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>`
+  },
+  {
+    title: "Facturación Electrónica (SAT)",
+    description: "Timbrado avanzado con integración nativa de catálogos SAT, descargas de PDFs, códigos QR y portal de cancelaciones.",
+    icon: `<svg class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>`
+  },
+  {
+    title: "Inventario y Multi-Sucursal",
+    description: "Control preciso de existencias, traspaso de mercancía entre empresas/sucursales y cálculo de recetas (costeos).",
+    icon: `<svg class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>`
+  },
+  {
+    title: "Roles, Cajas y B2B",
+    description: "Gestión granular de empleados por turnos, cuentas por pagar a proveedores y créditos para tus clientes frecuentes.",
+    icon: `<svg class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" /></svg>`
+  }
+];
+---
+
+<section id="caracteristicas" class="py-24 bg-white relative">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <h2 class="text-primary font-bold tracking-wide uppercase text-sm mb-3">Características principales</h2>
+      <p class="text-3xl md:text-4xl font-black text-secondary leading-tight mb-4">Todo lo que necesitas para tu negocio</p>
+      <p class="text-lg text-secondary/70">Herramientas poderosas diseñadas pensando en la simplicidad. Olvídate de los sistemas complicados y lentos.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {features.map((feature) => (
+        <div class="bg-bg-alt/30 rounded-2xl p-8 hover:bg-bg-alt/50 transition-colors border border-transparent hover:border-bg-alt group">
+          <div class="w-12 h-12 rounded-xl bg-white shadow-sm flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <Fragment set:html={feature.icon} />
+          </div>
+          <h3 class="text-xl font-bold text-secondary mb-3">{feature.title}</h3>
+          <p class="text-secondary/70 leading-relaxed">
+            {feature.description}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

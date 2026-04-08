@@ -1,0 +1,43 @@
+---
+// FAQ.astro
+const faqs = [
+  {
+    question: "¿Necesito equipo especial para usar POS EXPRESS?",
+    answer: "No, POS EXPRESS funciona desde cualquier navegador web. Puedes usar tu computadora actual, tablet o incluso tu smartphone. También es compatible con la mayoría de impresoras térmicas y lectores de códigos de barras USB/Bluetooth."
+  },
+
+  {
+    question: "¿Es fácil migrar mis productos desde otro sistema?",
+    answer: "¡Totalmente! Contamos con una herramienta de importación masiva donde solo necesitas subir un archivo Excel (o CSV) con tu lista de productos y estarán listos en minutos."
+  },
+  {
+    question: "¿Ofrecen soporte técnico?",
+    answer: "Sí, todos nuestros planes incluyen soporte. Dependiendo de tu plan, tendrás acceso vía email, chat en vivo, o una línea telefónica con atención prioritaria."
+  }
+];
+---
+
+<section id="faq" class="py-24 bg-bg-alt/20">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-black text-secondary mb-4">Preguntas Frecuentes</h2>
+      <p class="text-lg text-secondary/70">Resolvemos tus dudas para que comiences con confianza.</p>
+    </div>
+
+    <div class="space-y-6">
+      {faqs.map((faq) => (
+        <details class="group bg-white rounded-2xl shadow-sm border border-bg-alt overflow-hidden [&_summary::-webkit-details-marker]:hidden">
+          <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-secondary hover:text-primary transition-colors">
+            <span class="text-lg">{faq.question}</span>
+            <span class="transition group-open:rotate-180 text-primary">
+              <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+            </span>
+          </summary>
+          <div class="p-6 pt-0 text-secondary/70 leading-relaxed border-t border-bg-alt/50 mt-2">
+            {faq.answer}
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
