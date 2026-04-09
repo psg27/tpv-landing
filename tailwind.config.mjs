@@ -5,9 +5,11 @@ export default {
 		extend: {
 			colors: {
 				primary: '#F26A21',
-				secondary: '#000000',
-				'bg-main': '#FFFFFF',
-				'bg-alt': '#D9D9D9',
+				secondary: '#FFFFFF',
+				background: {
+					main: '#000000',
+					alt: '#111111',
+				},
 			},
 			fontFamily: {
 				sans: ['Inter', 'sans-serif'],

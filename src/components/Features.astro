@@ -24,22 +24,22 @@ const features = [
 ];
 ---
 
-<section id="caracteristicas" class="py-24 bg-white relative">
+<section id="caracteristicas" class="py-24 bg-background-main relative">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center max-w-3xl mx-auto mb-16">
       <h2 class="text-primary font-bold tracking-wide uppercase text-sm mb-3">Características principales</h2>
       <p class="text-3xl md:text-4xl font-black text-secondary leading-tight mb-4">Todo lo que necesitas para tu negocio</p>
-      <p class="text-lg text-secondary/70">Herramientas poderosas diseñadas pensando en la simplicidad. Olvídate de los sistemas complicados y lentos.</p>
+      <p class="text-lg text-secondary/60">Herramientas poderosas diseñadas pensando en la simplicidad. Olvídate de los sistemas complicados y lentos.</p>
     </div>
 
     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
       {features.map((feature) => (
-        <div class="bg-bg-alt/30 rounded-2xl p-8 hover:bg-bg-alt/50 transition-colors border border-transparent hover:border-bg-alt group">
-          <div class="w-12 h-12 rounded-xl bg-white shadow-sm flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+        <div class="bg-background-alt/30 rounded-2xl p-8 hover:bg-background-alt/50 transition-colors border border-white/5 hover:border-white/10 group">
+          <div class="w-12 h-12 rounded-xl bg-background-alt flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
             <Fragment set:html={feature.icon} />
           </div>
           <h3 class="text-xl font-bold text-secondary mb-3">{feature.title}</h3>
-          <p class="text-secondary/70 leading-relaxed">
+          <p class="text-secondary/60 leading-relaxed">
             {feature.description}
           </p>
         </div>

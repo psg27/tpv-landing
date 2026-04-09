@@ -49,17 +49,17 @@ const plans = [
 ];
 ---
 
-<section id="precios" class="py-24 bg-white">
+<section id="precios" class="py-24 bg-background-main">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center max-w-3xl mx-auto mb-16">
       <h2 class="text-primary font-bold tracking-wide uppercase text-sm mb-3">Planes y Precios</h2>
       <p class="text-3xl md:text-4xl font-black text-secondary leading-tight mb-4">Elige el plan ideal para tu negocio</p>
-      <p class="text-lg text-secondary/70">Sin contratos forzosos ni letras pequeñas. Cambia o cancela cuando quieras.</p>
+      <p class="text-lg text-secondary/60">Sin contratos forzosos ni letras pequeñas. Cambia o cancela cuando quieras.</p>
     </div>
 
     <div class="grid md:grid-cols-3 gap-8 items-center max-w-6xl mx-auto">
       {plans.map((plan) => (
-        <div class={`rounded-3xl p-8 transition-transform duration-300 hover:-translate-y-2 ${plan.isPopular ? 'bg-secondary text-white transform scale-105 shadow-2xl relative' : 'bg-bg-alt/20 text-secondary border border-bg-alt hover:shadow-xl'}`}>
+        <div class={`rounded-3xl p-8 transition-transform duration-300 hover:-translate-y-2 ${plan.isPopular ? 'bg-background-alt text-secondary border-2 border-primary transform scale-105 shadow-2xl relative' : 'bg-background-alt/20 text-secondary border border-white/5 hover:border-white/10 hover:shadow-xl'}`}>
           
           {plan.isPopular && (
             <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 py-1 bg-primary text-white rounded-full text-xs font-bold uppercase tracking-wider shadow-lg">
@@ -68,13 +68,13 @@ const plans = [
           )}
 
           <div class="mb-8">
-            <h3 class={`text-2xl font-bold mb-2 ${plan.isPopular ? 'text-white' : 'text-secondary'}`}>{plan.name}</h3>
-            <p class={plan.isPopular ? 'text-white/70 text-sm' : 'text-secondary/70 text-sm'}>{plan.description}</p>
+            <h3 class={`text-2xl font-bold mb-2 ${plan.isPopular ? 'text-secondary' : 'text-secondary'}`}>{plan.name}</h3>
+            <p class={plan.isPopular ? 'text-secondary/60 text-sm' : 'text-secondary/60 text-sm'}>{plan.description}</p>
           </div>
           
           <div class="mb-8">
             <span class="text-4xl font-black tracking-tight">{plan.price}</span>
-            <span class={plan.isPopular ? 'text-white/60 font-medium' : 'text-secondary/50 font-medium'}>{plan.period}</span>
+            <span class={plan.isPopular ? 'text-secondary/50 font-medium' : 'text-secondary/50 font-medium'}>{plan.period}</span>
           </div>
 
           <ul class="space-y-4 mb-8">
@@ -83,12 +83,12 @@ const plans = [
                 <svg class={`w-5 h-5 flex-shrink-0 ${plan.isPopular ? 'text-primary' : 'text-primary'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                 </svg>
-                <span class={plan.isPopular ? 'text-white/90' : 'text-secondary/80'}>{feature}</span>
+                <span class={plan.isPopular ? 'text-secondary/80' : 'text-secondary/80'}>{feature}</span>
               </li>
             ))}
           </ul>
 
-          <a href="#" class={`block w-full py-4 px-6 rounded-full font-bold text-center transition-colors ${plan.isPopular ? 'bg-primary hover:bg-primary/90 text-white' : 'bg-white hover:bg-bg-alt text-secondary border border-secondary/20'}`}>
+          <a href="#" class={`block w-full py-4 px-6 rounded-full font-bold text-center transition-colors ${plan.isPopular ? 'bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20' : 'bg-background-alt/50 hover:bg-background-alt text-secondary border border-white/10'}`}>
             {plan.buttonText}
           </a>
           

@@ -3,7 +3,7 @@ import { Image } from 'astro:assets';
 import logoClaro from '../assets/logo_claro.png';
 ---
 
-<footer class="bg-secondary text-white pt-16 pb-8">
+<footer class="bg-background-alt text-secondary pt-16 pb-8 border-t border-white/5">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
       
@@ -12,50 +12,50 @@ import logoClaro from '../assets/logo_claro.png';
         <a href="#" class="flex items-center gap-2 group mb-6">
           <Image src={logoClaro} alt="POS EXPRESS Logo Claro" class="h-16 md:h-20 w-auto" />
         </a>
-        <p class="text-white/60 text-sm leading-relaxed mb-6">
+        <p class="text-secondary/60 text-sm leading-relaxed mb-6">
           El sistema de punto de venta moderno para negocios que buscan escalar sin complicaciones.
         </p>
       </div>
 
       <!-- Links -->
       <div>
-        <h3 class="font-bold text-lg mb-4 text-white">Producto</h3>
+        <h3 class="font-bold text-lg mb-4 text-secondary">Producto</h3>
         <ul class="space-y-3">
-          <li><a href="#caracteristicas" class="text-white/60 hover:text-primary transition-colors text-sm">Características</a></li>
-          <li><a href="#como-funciona" class="text-white/60 hover:text-primary transition-colors text-sm">Cómo funciona</a></li>
-          <li><a href="#precios" class="text-white/60 hover:text-primary transition-colors text-sm">Precios</a></li>
-          <li><a href="#" class="text-white/60 hover:text-primary transition-colors text-sm">Actualizaciones</a></li>
+          <li><a href="#caracteristicas" class="text-secondary/60 hover:text-primary transition-colors text-sm">Características</a></li>
+          <li><a href="#como-funciona" class="text-secondary/60 hover:text-primary transition-colors text-sm">Cómo funciona</a></li>
+          <li><a href="#precios" class="text-secondary/60 hover:text-primary transition-colors text-sm">Precios</a></li>
+          <li><a href="#" class="text-secondary/60 hover:text-primary transition-colors text-sm">Actualizaciones</a></li>
         </ul>
       </div>
 
       <!-- Resources -->
       <div>
-        <h3 class="font-bold text-lg mb-4 text-white">Recursos</h3>
+        <h3 class="font-bold text-lg mb-4 text-secondary">Recursos</h3>
         <ul class="space-y-3">
-          <li><a href="#faq" class="text-white/60 hover:text-primary transition-colors text-sm">Preguntas Frecuentes</a></li>
-          <li><a href="#" class="text-white/60 hover:text-primary transition-colors text-sm">Centro de Ayuda</a></li>
-          <li><a href="#" class="text-white/60 hover:text-primary transition-colors text-sm">Blog</a></li>
-          <li><a href="#" class="text-white/60 hover:text-primary transition-colors text-sm">Guía de usuario</a></li>
+          <li><a href="#faq" class="text-secondary/60 hover:text-primary transition-colors text-sm">Preguntas Frecuentes</a></li>
+          <li><a href="#" class="text-secondary/60 hover:text-primary transition-colors text-sm">Centro de Ayuda</a></li>
+          <li><a href="#" class="text-secondary/60 hover:text-primary transition-colors text-sm">Blog</a></li>
+          <li><a href="#" class="text-secondary/60 hover:text-primary transition-colors text-sm">Guía de usuario</a></li>
         </ul>
       </div>
 
       <!-- Contact -->
       <div>
-        <h3 class="font-bold text-lg mb-4 text-white">Contacto</h3>
+        <h3 class="font-bold text-lg mb-4 text-secondary">Contacto</h3>
         <ul class="space-y-3">
-          <li class="text-white/60 text-sm">soporte@posexpress.com</li>
-          <li class="text-white/60 text-sm">+52 (55) 1234-5678</li>
-          <li class="text-white/60 text-sm">Lunes - Viernes, 9am - 6pm</li>
+          <li class="text-secondary/60 text-sm">soporte@posexpress.com</li>
+          <li class="text-secondary/60 text-sm">+52 (55) 1234-5678</li>
+          <li class="text-secondary/60 text-sm">Lunes - Viernes, 9am - 6pm</li>
         </ul>
       </div>
 
     </div>
 
-    <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-      <p class="text-white/40 text-sm">
+    <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+      <p class="text-secondary/40 text-sm">
         &copy; {new Date().getFullYear()} POS EXPRESS. Todos los derechos reservados.
       </p>
-      <div class="flex items-center gap-6 text-white/40">
+      <div class="flex items-center gap-6 text-secondary/40">
         <a href="#" class="hover:text-primary transition-colors text-sm">Privacidad</a>
         <a href="#" class="hover:text-primary transition-colors text-sm">Términos</a>
       </div>
