@@ -2,98 +2,353 @@
 // Pricing.astro
 const plans = [
   {
-    name: "Básico",
-    price: "$490",
+    name: "Start",
+    subtitle: "Emprendedor",
+    priceMonthly: "$249",
+    priceAnnual: "$2,400",
     period: "/mes",
-    description: "Ideal para pequeños negocios emprendiendo.",
+    description: "Ideal para pequeños negocios que están comenzando.",
     features: [
-      "Punto de Venta Básico",
-      "Inventario hasta 1,000 productos",
-      "Facturación SAT (Limitada)",
-      "1 Usuario / 1 Caja",
-      "Soporte por email"
+      "Hasta 1,000 productos",
+      "Hasta 1,000 clientes",
+      "3 usuarios (1 Admin + 2 Caja)",
+      "1 sucursal",
+      "Inventario incluido",
+      "CFDI según paquetes",
+      "Historiales ilimitados",
+      "Almacén",
+      "Apartados y créditos",
+      "Dashboard en tiempo real",
+      "Corte de caja y acumulado",
     ],
-    buttonText: "Elegir Básico",
-    isPopular: false
+    notIncluded: [
+      "Cotizaciones",
+      "Órdenes de compra",
+      "Cuentas por pagar",
+      "App Móvil TPV",
+      "API e/s",
+      "Alertas",
+    ],
+    buttonText: "Elegir Start",
+    isPopular: false,
   },
   {
     name: "Pro",
-    price: "$890",
+    subtitle: "En Crecimiento",
+    priceMonthly: "$299",
+    priceAnnual: "$3,000",
     period: "/mes",
     description: "Para negocios en crecimiento que necesitan más poder.",
     features: [
-      "Todo lo del Básico",
-      "Modo Restaurante y Retail",
-      "Facturación SAT Ilimitada",
-      "Roles y Permisos Avanzados",
-      "Múltiples sucursales (hasta 3)"
+      "Productos ilimitados",
+      "Clientes ilimitados",
+      "Hasta 10 usuarios + Roles",
+      "1 sucursal (adic. +$299)",
+      "Inventario incluido",
+      "CFDI según paquetes",
+      "Historiales ilimitados",
+      "Cotizaciones",
+      "Órdenes de compra",
+      "Cuentas por pagar",
+      "App Móvil modo TPV",
+      "Apartados y créditos",
+      "Dashboard en tiempo real",
+      "Alertas",
+      "Todos los reportes",
+      "Rank de productos y clientes",
+    ],
+    notIncluded: [
+      "API e/s",
     ],
     buttonText: "Comenzar Prueba Gratis",
-    isPopular: true
+    isPopular: true,
   },
   {
-    name: "Premium",
-    price: "$1,490",
+    name: "Business",
+    subtitle: "Multisucursal",
+    priceMonthly: "$449",
+    priceAnnual: "$4,800",
     period: "/mes",
-    description: "Para cadenas y franquicias establecidas.",
+    description: "Para cadenas y negocios con múltiples sucursales.",
     features: [
-      "Todo lo del plan Pro",
-      "Sucursales y Cajas ilimitadas",
-      "Gestión B2B (CXP y Proveedores)",
-      "Dashboard Corporativo y Logs",
-      "Soporte Prioritario 24/7"
+      "Productos ilimitados",
+      "Clientes ilimitados",
+      "Usuarios ilimitados",
+      "2 sucursales (adic. +$299)",
+      "Inventario personalizado",
+      "CFDI según paquetes",
+      "Historiales ilimitados",
+      "Cotizaciones",
+      "Órdenes de compra",
+      "Cuentas por pagar",
+      "Almacén personalizado",
+      "App Móvil modo TPV",
+      "Apartados y créditos",
+      "Dashboard personalizado",
+      "API e/s",
+      "Alertas personalizadas",
+      "Reportes personalizados",
+      "Finanzas y costos",
+      "Mejoras personalizadas",
     ],
+    notIncluded: [],
     buttonText: "Contactar Ventas",
-    isPopular: false
-  }
+    isPopular: false,
+  },
+];
+
+// Comparison table data
+const comparisonRows = [
+  { feature: "Productos", start: "Hasta 1,000", pro: "Ilimitado", business: "Ilimitado" },
+  { feature: "Clientes", start: "Hasta 1,000", pro: "Ilimitado", business: "Ilimitado" },
+  { feature: "Usuarios", start: "3 (1 Admin + 2 Caja)", pro: "Hasta 10 + Roles y Permisos", business: "Ilimitado" },
+  { feature: "Sucursales", start: "1", pro: "1 (1 Adic. + $299)", business: "2 (1 Adic. + $299)" },
+  { feature: "Escalable", start: "Sí, al siguiente plan", pro: "Sí, al siguiente plan", business: "Mejoras personalizadas" },
+  { feature: "Inventario", start: "✓", pro: "✓", business: "Personalizado" },
+  { feature: "CFDI", start: "Según paquetes", pro: "Según paquetes", business: "Según paquetes" },
+  { feature: "Historiales", start: "Ilimitado", pro: "Ilimitado", business: "Ilimitado" },
+  { feature: "Cotizaciones", start: "✗", pro: "✓", business: "✓" },
+  { feature: "Órdenes de Compra", start: "✗", pro: "✓", business: "✓" },
+  { feature: "Cuentas por Pagar", start: "✗", pro: "✓", business: "✓" },
+  { feature: "Almacén", start: "✓", pro: "✓", business: "Personalizado" },
+  { feature: "App Móvil TPV", start: "✗", pro: "✓", business: "✓" },
+  { feature: "Apartados y Créditos", start: "✓", pro: "✓", business: "✓" },
+  { feature: "Dashboard tiempo real", start: "✓", pro: "✓", business: "Personalizado" },
+  { feature: "API e/s", start: "✗", pro: "✗", business: "✓" },
+  { feature: "Alertas", start: "✗", pro: "✓", business: "Personalizadas" },
+  { feature: "Reportes", start: "Corte de caja y acumulado", pro: "Todos", business: "Personalizados" },
 ];
 ---
 
 <section id="precios" class="py-24 bg-background-main">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center max-w-3xl mx-auto mb-16">
+    <div class="text-center max-w-3xl mx-auto mb-6">
       <h2 class="text-primary font-bold tracking-wide uppercase text-sm mb-3">Planes y Precios</h2>
-      <p class="text-3xl md:text-4xl font-black text-secondary leading-tight mb-4">Elige el plan ideal para tu negocio</p>
+      <p class="text-3xl md:text-4xl font-black text-secondary leading-tight mb-4">Planes que crecen contigo</p>
       <p class="text-lg text-secondary/60">Sin contratos forzosos ni letras pequeñas. Cambia o cancela cuando quieras.</p>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-8 items-center max-w-6xl mx-auto">
+    <!-- Toggle mensual / anual -->
+    <div class="flex items-center justify-center gap-4 mb-14">
+      <span class="text-secondary/60 text-sm font-medium" id="label-monthly">Mensual</span>
+      <button
+        id="billing-toggle"
+        type="button"
+        class="relative inline-flex h-7 w-14 items-center rounded-full bg-background-alt border border-white/10 transition-colors focus:outline-none"
+        aria-pressed="false"
+      >
+        <span class="billing-toggle-dot inline-block h-5 w-5 rounded-full bg-primary shadow-lg transform transition-transform translate-x-1"></span>
+      </button>
+      <span class="text-secondary/60 text-sm font-medium" id="label-annual">Anual <span class="text-primary font-bold">(-17%)</span></span>
+    </div>
+
+    <!-- Plan Cards -->
+    <div class="grid md:grid-cols-3 gap-6 lg:gap-8 items-stretch max-w-6xl mx-auto mb-20">
       {plans.map((plan) => (
-        <div class={`rounded-3xl p-8 transition-transform duration-300 hover:-translate-y-2 ${plan.isPopular ? 'bg-background-alt text-secondary border-2 border-primary transform scale-105 shadow-2xl relative' : 'bg-background-alt/20 text-secondary border border-white/5 hover:border-white/10 hover:shadow-xl'}`}>
-          
+        <div class={`pricing-card rounded-3xl p-8 flex flex-col ${plan.isPopular ? 'pricing-card--popular relative border-2 border-primary shadow-2xl shadow-primary/10' : 'border border-white/5 hover:border-white/10'}`}>
+
           {plan.isPopular && (
-            <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 py-1 bg-primary text-white rounded-full text-xs font-bold uppercase tracking-wider shadow-lg">
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 py-1 bg-primary text-white rounded-full text-xs font-bold uppercase tracking-wider shadow-lg shadow-primary/30">
               Más Popular
             </div>
           )}
 
-          <div class="mb-8">
-            <h3 class={`text-2xl font-bold mb-2 ${plan.isPopular ? 'text-secondary' : 'text-secondary'}`}>{plan.name}</h3>
-            <p class={plan.isPopular ? 'text-secondary/60 text-sm' : 'text-secondary/60 text-sm'}>{plan.description}</p>
-          </div>
-          
-          <div class="mb-8">
-            <span class="text-4xl font-black tracking-tight">{plan.price}</span>
-            <span class={plan.isPopular ? 'text-secondary/50 font-medium' : 'text-secondary/50 font-medium'}>{plan.period}</span>
+          <div class="mb-6">
+            <div class="flex items-center gap-3 mb-1">
+              <h3 class="text-2xl font-bold text-secondary">{plan.name}</h3>
+            </div>
+            <span class="text-xs font-semibold uppercase tracking-widest text-primary/80">{plan.subtitle}</span>
+            <p class="text-secondary/50 text-sm mt-2">{plan.description}</p>
           </div>
 
-          <ul class="space-y-4 mb-8">
+          <div class="mb-8">
+            <div class="flex items-baseline gap-1">
+              <span class="text-4xl font-black tracking-tight text-secondary price-monthly">{plan.priceMonthly}</span>
+              <span class="text-4xl font-black tracking-tight text-secondary price-annual hidden">{plan.priceAnnual}</span>
+              <span class="text-secondary/50 font-medium price-period-monthly">/mes</span>
+              <span class="text-secondary/50 font-medium price-period-annual hidden">/año</span>
+            </div>
+            <p class="text-xs text-secondary/40 mt-1 annual-note hidden">
+              Equivale a ~${Math.round(parseInt(plan.priceAnnual.replace(/[$,]/g, '')) / 12)}/mes
+            </p>
+          </div>
+
+          <!-- Features list -->
+          <ul class="space-y-3 mb-8 flex-grow">
             {plan.features.map((feature) => (
-              <li class="flex items-center gap-3">
-                <svg class={`w-5 h-5 flex-shrink-0 ${plan.isPopular ? 'text-primary' : 'text-primary'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              <li class="flex items-start gap-2.5 text-sm">
+                <svg class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
                 </svg>
-                <span class={plan.isPopular ? 'text-secondary/80' : 'text-secondary/80'}>{feature}</span>
+                <span class="text-secondary/80">{feature}</span>
+              </li>
+            ))}
+            {plan.notIncluded.map((feature) => (
+              <li class="flex items-start gap-2.5 text-sm opacity-40">
+                <svg class="w-4 h-4 text-secondary/40 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+                <span class="text-secondary/50 line-through">{feature}</span>
               </li>
             ))}
           </ul>
 
-          <a href="#" class={`block w-full py-4 px-6 rounded-full font-bold text-center transition-colors ${plan.isPopular ? 'bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20' : 'bg-background-alt/50 hover:bg-background-alt text-secondary border border-white/10'}`}>
+          <a href="#" class={`block w-full py-4 px-6 rounded-full font-bold text-center transition-all duration-300 transform hover:-translate-y-0.5 ${plan.isPopular ? 'bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20' : 'bg-background-alt/50 hover:bg-background-alt text-secondary border border-white/10'}`}>
             {plan.buttonText}
           </a>
-          
+
         </div>
       ))}
     </div>
+
+    <!-- Comparison Table -->
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-10">
+        <button id="toggle-comparison" class="inline-flex items-center gap-2 text-primary font-semibold text-sm hover:text-primary/80 transition-colors cursor-pointer group">
+          <span>Ver comparación completa</span>
+          <svg class="w-4 h-4 transition-transform group-[.is-open]:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+      </div>
+
+      <div id="comparison-table" class="comparison-table-wrapper hidden">
+        <div class="overflow-x-auto rounded-2xl border border-white/5">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="bg-background-alt/50">
+                <th class="text-left py-4 px-6 font-bold text-secondary border-b border-white/5 w-1/4">Característica</th>
+                <th class="text-center py-4 px-6 font-bold text-secondary border-b border-white/5 w-1/4">
+                  <div>Start</div>
+                  <div class="text-xs font-normal text-secondary/50">$249/mes</div>
+                </th>
+                <th class="text-center py-4 px-6 font-bold text-primary border-b border-primary/20 w-1/4 bg-primary/5">
+                  <div>Pro ⭐</div>
+                  <div class="text-xs font-normal text-secondary/50">$299/mes</div>
+                </th>
+                <th class="text-center py-4 px-6 font-bold text-secondary border-b border-white/5 w-1/4">
+                  <div>Business</div>
+                  <div class="text-xs font-normal text-secondary/50">$449/mes</div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {comparisonRows.map((row, i) => (
+                <tr class={`${i % 2 === 0 ? 'bg-background-alt/10' : ''} hover:bg-background-alt/30 transition-colors`}>
+                  <td class="py-3.5 px-6 text-secondary/80 font-medium border-b border-white/5">{row.feature}</td>
+                  <td class="py-3.5 px-6 text-center border-b border-white/5">
+                    <span class={`${row.start === '✓' ? 'text-green-500 text-lg' : row.start === '✗' ? 'text-red-400/60 text-lg' : 'text-secondary/70 text-xs'}`}>
+                      {row.start}
+                    </span>
+                  </td>
+                  <td class="py-3.5 px-6 text-center border-b border-primary/10 bg-primary/5">
+                    <span class={`${row.pro === '✓' ? 'text-green-500 text-lg' : row.pro === '✗' ? 'text-red-400/60 text-lg' : 'text-secondary/70 text-xs'}`}>
+                      {row.pro}
+                    </span>
+                  </td>
+                  <td class="py-3.5 px-6 text-center border-b border-white/5">
+                    <span class={`${row.business === '✓' ? 'text-green-500 text-lg' : row.business === '✗' ? 'text-red-400/60 text-lg' : 'text-secondary/70 text-xs'}`}>
+                      {row.business}
+                    </span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
+
+<style>
+  .pricing-card {
+    background: rgba(17, 17, 17, 0.6);
+    backdrop-filter: blur(12px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .pricing-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .pricing-card--popular {
+    background: rgba(17, 17, 17, 0.8);
+  }
+
+  .pricing-card--popular:hover {
+    box-shadow: 0 25px 60px rgba(242, 106, 33, 0.15);
+  }
+
+  .comparison-table-wrapper {
+    animation: fadeInTable 0.4s ease-out;
+  }
+
+  @keyframes fadeInTable {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<script>
+  // Billing toggle (monthly / annual)
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggle = document.getElementById('billing-toggle');
+    const dot = toggle?.querySelector('.billing-toggle-dot');
+    const monthlyPrices = document.querySelectorAll('.price-monthly');
+    const annualPrices = document.querySelectorAll('.price-annual');
+    const monthlyPeriods = document.querySelectorAll('.price-period-monthly');
+    const annualPeriods = document.querySelectorAll('.price-period-annual');
+    const annualNotes = document.querySelectorAll('.annual-note');
+    const labelMonthly = document.getElementById('label-monthly');
+    const labelAnnual = document.getElementById('label-annual');
+
+    let isAnnual = false;
+
+    toggle?.addEventListener('click', () => {
+      isAnnual = !isAnnual;
+
+      if (isAnnual) {
+        dot?.classList.remove('translate-x-1');
+        dot?.classList.add('translate-x-8');
+        toggle.classList.add('bg-primary/20');
+        labelAnnual?.classList.add('text-primary');
+        labelMonthly?.classList.remove('text-primary');
+      } else {
+        dot?.classList.add('translate-x-1');
+        dot?.classList.remove('translate-x-8');
+        toggle.classList.remove('bg-primary/20');
+        labelAnnual?.classList.remove('text-primary');
+        labelMonthly?.classList.add('text-primary');
+      }
+
+      monthlyPrices.forEach(el => el.classList.toggle('hidden', isAnnual));
+      annualPrices.forEach(el => el.classList.toggle('hidden', !isAnnual));
+      monthlyPeriods.forEach(el => el.classList.toggle('hidden', isAnnual));
+      annualPeriods.forEach(el => el.classList.toggle('hidden', !isAnnual));
+      annualNotes.forEach(el => el.classList.toggle('hidden', !isAnnual));
+    });
+
+    // Comparison table toggle
+    const toggleBtn = document.getElementById('toggle-comparison');
+    const table = document.getElementById('comparison-table');
+
+    toggleBtn?.addEventListener('click', () => {
+      table?.classList.toggle('hidden');
+      toggleBtn.classList.toggle('is-open');
+      const span = toggleBtn.querySelector('span');
+      if (span) {
+        span.textContent = table?.classList.contains('hidden')
+          ? 'Ver comparación completa'
+          : 'Ocultar comparación';
+      }
+    });
+  });
+</script>

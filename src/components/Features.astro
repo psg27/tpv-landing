@@ -2,24 +2,34 @@
 // Features.astro
 const features = [
   {
-    title: "Comercio General y Restaurantes",
-    description: "Retail y modo restaurante con manejo de mesas. Integración con escáneres e impresión de tickets con QZ Tray.",
-    icon: `<svg class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>`
-  },
-  {
-    title: "Facturación Electrónica (SAT)",
-    description: "Timbrado avanzado con integración nativa de catálogos SAT, descargas de PDFs, códigos QR y portal de cancelaciones.",
+    title: "Facturación Electrónica CFDI 4.0",
+    description: "Timbrado integrado con catálogos SAT actualizados, generación de PDF, código QR y portal de cancelaciones. Cumple con todas las disposiciones fiscales vigentes.",
     icon: `<svg class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>`
   },
   {
-    title: "Inventario y Multi-Sucursal",
-    description: "Control preciso de existencias, traspaso de mercancía entre empresas/sucursales y cálculo de recetas (costeos).",
+    title: "Inventario en Tiempo Real",
+    description: "Controla existencias al instante con cada venta, entrada o traspaso. Alertas de stock mínimo, costeos automáticos y reportes de movimientos.",
     icon: `<svg class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>`
   },
   {
-    title: "Roles, Cajas y B2B",
-    description: "Gestión granular de empleados por turnos, cuentas por pagar a proveedores y créditos para tus clientes frecuentes.",
-    icon: `<svg class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" /></svg>`
+    title: "Multi-sucursal y Multiusuario",
+    description: "Administra múltiples sucursales y cajas desde un solo lugar. Roles y permisos granulares para cada empleado, con control total de accesos.",
+    icon: `<svg class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg>`
+  },
+  {
+    title: "Reportes y Métricas",
+    description: "Dashboard con indicadores clave de tu negocio: ventas por período, productos más vendidos, rendimiento por sucursal y análisis de rentabilidad.",
+    icon: `<svg class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>`
+  },
+  {
+    title: "En la Nube, Cualquier Dispositivo",
+    description: "Accede desde computadora, tablet o celular. Tu información siempre disponible y sincronizada en tiempo real, sin necesidad de instalar nada.",
+    icon: `<svg class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" /></svg>`
+  },
+  {
+    title: "Escalable hasta ERP",
+    description: "Comienza con un punto de venta y crece hasta un sistema ERP completo: cuentas por pagar, proveedores, créditos a clientes y gestión B2B.",
+    icon: `<svg class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>`
   }
 ];
 ---
@@ -28,14 +38,14 @@ const features = [
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center max-w-3xl mx-auto mb-16">
       <h2 class="text-primary font-bold tracking-wide uppercase text-sm mb-3">Características principales</h2>
-      <p class="text-3xl md:text-4xl font-black text-secondary leading-tight mb-4">Todo lo que necesitas para tu negocio</p>
-      <p class="text-lg text-secondary/60">Herramientas poderosas diseñadas pensando en la simplicidad. Olvídate de los sistemas complicados y lentos.</p>
+      <p class="text-3xl md:text-4xl font-black text-secondary leading-tight mb-4">Todo lo que necesitas para operar tu negocio</p>
+      <p class="text-lg text-secondary/60">Un sistema diseñado para simplificar tu operación diaria, reducir errores y darte control total en tiempo real.</p>
     </div>
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
       {features.map((feature) => (
-        <div class="bg-background-alt/30 rounded-2xl p-8 hover:bg-background-alt/50 transition-colors border border-white/5 hover:border-white/10 group">
-          <div class="w-12 h-12 rounded-xl bg-background-alt flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+        <div class="bg-background-alt/30 rounded-2xl p-8 hover:bg-background-alt/50 transition-all duration-300 border border-white/5 hover:border-primary/20 hover:-translate-y-1 group">
+          <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-300">
             <Fragment set:html={feature.icon} />
           </div>
           <h3 class="text-xl font-bold text-secondary mb-3">{feature.title}</h3>

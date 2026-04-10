@@ -1,0 +1,138 @@
+---
+// WhatsApp Floating Button
+// Cambia el número y mensaje predeterminado según necesites
+const phoneNumber = "5215512345678"; // Número con código de país (sin +)
+const defaultMessage = "¡Hola! Me interesa conocer más sobre POS EXPRESS.";
+const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(defaultMessage)}`;
+---
+
+<a
+  id="whatsapp-float-btn"
+  href={whatsappUrl}
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Contactar por WhatsApp"
+  class="whatsapp-float"
+>
+  <!-- WhatsApp SVG Icon -->
+  <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" class="whatsapp-icon">
+    <path d="M16.004 2.002C8.28 2.002 2.004 8.278 2.004 16.002c0 2.474.646 4.89 1.876 7.024L2 30.002l7.172-1.88A13.94 13.94 0 0016.004 30c7.724 0 14-6.276 14-14s-6.276-13.998-14-13.998zm0 25.596a11.56 11.56 0 01-5.894-1.612l-.422-.252-4.374 1.146 1.166-4.26-.276-.438A11.52 11.52 0 014.404 16c0-6.396 5.204-11.6 11.6-11.6s11.6 5.204 11.6 11.6-5.204 11.598-11.6 11.598zm6.36-8.686c-.348-.174-2.064-1.018-2.384-1.134-.32-.116-.552-.174-.784.174-.232.348-.9 1.134-1.104 1.366-.204.232-.408.26-.756.086-.348-.174-1.47-.542-2.8-1.728-1.034-.922-1.732-2.062-1.936-2.41-.204-.348-.022-.536.154-.71.158-.156.348-.406.522-.61.174-.204.232-.348.348-.58.116-.232.058-.436-.03-.61-.086-.174-.784-1.89-1.074-2.588-.282-.678-.57-.586-.784-.596l-.668-.012c-.232 0-.61.086-.928.436-.32.348-1.218 1.19-1.218 2.902s1.246 3.366 1.42 3.598c.174.232 2.454 3.748 5.946 5.254.832.358 1.482.572 1.988.732.836.266 1.596.228 2.198.138.67-.1 2.064-.844 2.354-1.66.29-.816.29-1.516.204-1.66-.088-.146-.32-.232-.668-.406z" fill="currentColor"/>
+  </svg>
+
+  <!-- Tooltip -->
+  <span class="whatsapp-tooltip">¿Necesitas ayuda?</span>
+</a>
+
+<style>
+  .whatsapp-float {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #25D366;
+    color: #fff;
+    box-shadow:
+      0 4px 14px rgba(37, 211, 102, 0.45),
+      0 0 0 0 rgba(37, 211, 102, 0.4);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
+    animation: whatsapp-pulse 2s infinite;
+  }
+
+  .whatsapp-float:hover {
+    transform: scale(1.1);
+    box-shadow:
+      0 6px 20px rgba(37, 211, 102, 0.55),
+      0 0 0 8px rgba(37, 211, 102, 0.15);
+    animation: none;
+  }
+
+  .whatsapp-float:active {
+    transform: scale(0.95);
+  }
+
+  .whatsapp-icon {
+    width: 34px;
+    height: 34px;
+  }
+
+  /* Tooltip */
+  .whatsapp-tooltip {
+    position: absolute;
+    right: 72px;
+    background: rgba(17, 17, 17, 0.95);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 14px;
+    border-radius: 8px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(8px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(8px);
+  }
+
+  .whatsapp-tooltip::after {
+    content: '';
+    position: absolute;
+    right: -6px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 6px 0 6px 6px;
+    border-style: solid;
+    border-color: transparent transparent transparent rgba(17, 17, 17, 0.95);
+  }
+
+  .whatsapp-float:hover .whatsapp-tooltip {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* Pulse animation */
+  @keyframes whatsapp-pulse {
+    0% {
+      box-shadow:
+        0 4px 14px rgba(37, 211, 102, 0.45),
+        0 0 0 0 rgba(37, 211, 102, 0.4);
+    }
+    70% {
+      box-shadow:
+        0 4px 14px rgba(37, 211, 102, 0.45),
+        0 0 0 14px rgba(37, 211, 102, 0);
+    }
+    100% {
+      box-shadow:
+        0 4px 14px rgba(37, 211, 102, 0.45),
+        0 0 0 0 rgba(37, 211, 102, 0);
+    }
+  }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .whatsapp-float {
+      width: 52px;
+      height: 52px;
+      bottom: 16px;
+      right: 16px;
+    }
+
+    .whatsapp-icon {
+      width: 28px;
+      height: 28px;
+    }
+
+    .whatsapp-tooltip {
+      display: none;
+    }
+  }
+</style>
