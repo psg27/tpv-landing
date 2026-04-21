@@ -1,0 +1,72 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  canonicalURL?: URL | string;
+  type?: string;
+}
+
+const {
+  title = "POS EXPRESS | Sistema Punto de Venta y Facturación CFDI 4.0",
+  description = "El sistema punto de venta más fácil para tu negocio. Control de inventarios, facturación electrónica CFDI 4.0, multi-sucursal y reportes en tiempo real. ¡Prueba gratis!",
+  image = "/og-image.jpg", // Asegúrate de tener esta imagen en public/
+  canonicalURL = new URL(Astro.url.pathname, Astro.site),
+  type = "website",
+} = Astro.props;
+
+const siteName = "POS EXPRESS";
+const keywords = "punto de venta, sistema tpv, facturación cfdi 4.0, control de inventarios, software para negocios, tpv en la nube, pos mexico";
+---
+
+<!-- Global Metadata -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<meta name="generator" content={Astro.generator} />
+
+<!-- Canonical URL -->
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Primary Meta Tags -->
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+<meta name="keywords" content={keywords} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={Astro.url} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={new URL(image, Astro.url)} />
+<meta property="og:site_name" content={siteName} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={Astro.url} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={new URL(image, Astro.url)} />
+
+<!-- JSON-LD SoftwareApplication -->
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "POS EXPRESS",
+    "operatingSystem": "Web, Windows, Android, iOS",
+    "applicationCategory": "BusinessApplication",
+    "description": "Sistema punto de venta en el cual puedes controlar tu inventario, ventas y facturación electrónica CFDI 4.0",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "MXN"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "ratingCount": "120"
+    }
+  }
+</script>
