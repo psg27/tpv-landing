@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # Sitemaps
-Sitemap: https://posexpress.com/sitemap-index.xml
+Sitemap: https://posexpress.mx/sitemap-index.xml
