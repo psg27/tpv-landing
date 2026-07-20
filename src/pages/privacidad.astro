@@ -1,0 +1,181 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const sections = [
+	{ id: 'compromiso-de-privacidad', n: 1, title: 'Compromiso de Privacidad' },
+	{ id: 'recoleccion-y-finalidad', n: 2, title: 'Recolección y Finalidad del Tratamiento' },
+	{ id: 'seguridad-de-la-informacion', n: 3, title: 'Seguridad de la Información' },
+	{ id: 'derechos-arco', n: 4, title: 'Derechos de los Usuarios (ARCO+)' },
+	{ id: 'notificacion-de-incidentes', n: 5, title: 'Notificación de Incidentes' },
+	{ id: 'modificaciones', n: 6, title: 'Modificaciones a la Política' },
+];
+---
+
+<Layout
+	title="Política de Privacidad y Seguridad | POS EXPRESS"
+	description="Política de Privacidad y Seguridad de Sistemas POSEXPRESS S.A.S. de C.V."
+>
+	<Header />
+
+	<main class="pt-40 pb-24">
+		<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+			<h1 class="text-3xl md:text-4xl font-extrabold text-secondary mb-3">
+				Política de Privacidad y Seguridad
+			</h1>
+			<p class="text-secondary/60 mb-1">Sistemas POSEXPRESS S.A.S. de C.V.</p>
+			<p class="text-secondary/50 text-sm mb-10">
+				Fecha de última actualización: 16 de julio de 2026
+			</p>
+
+			<!-- Table of contents -->
+			<nav aria-label="Índice" class="bg-background-alt/40 border border-white/10 rounded-xl p-6 mb-12">
+				<h2 class="text-sm font-bold uppercase tracking-wide text-secondary/50 mb-4">Índice</h2>
+				<ol class="grid sm:grid-cols-2 gap-x-8 gap-y-2">
+					{sections.map((s) => (
+						<li>
+							<a href={`#${s.id}`} class="flex gap-2 text-sm text-secondary/70 hover:text-primary transition-colors">
+								<span class="text-primary font-semibold shrink-0">{s.n}.</span>
+								<span>{s.title}</span>
+							</a>
+						</li>
+					))}
+				</ol>
+			</nav>
+
+			<!-- Content -->
+			<div class="bg-background-alt/40 border border-white/10 rounded-2xl divide-y divide-white/10">
+
+				<section id="compromiso-de-privacidad" class="scroll-mt-32 px-6 md:px-10 py-8">
+					<h2 class="flex items-center gap-3 text-xl font-bold text-secondary mb-3">
+						<span class="flex items-center justify-center h-7 w-7 rounded-full bg-primary/15 text-primary text-sm font-bold shrink-0">1</span>
+						Compromiso de Privacidad
+					</h2>
+					<p class="text-secondary/80 leading-relaxed">
+						En Sistemas POSEXPRESS S.A.S. de C.V., valoramos la confianza de nuestros Usuarios.
+						Esta política detalla cómo recopilamos, utilizamos y protegemos sus datos personales
+						al utilizar nuestro sistema web de gestión para pequeños comerciantes.
+					</p>
+				</section>
+
+				<section id="recoleccion-y-finalidad" class="scroll-mt-32 px-6 md:px-10 py-8">
+					<h2 class="flex items-center gap-3 text-xl font-bold text-secondary mb-3">
+						<span class="flex items-center justify-center h-7 w-7 rounded-full bg-primary/15 text-primary text-sm font-bold shrink-0">2</span>
+						Recolección y Finalidad del Tratamiento
+					</h2>
+					<p class="text-secondary/80 leading-relaxed mb-4">
+						Los datos personales obtenidos mediante su suscripción voluntaria son tratados con el fin de:
+					</p>
+					<ul class="list-disc list-outside pl-5 space-y-2 text-secondary/80 leading-relaxed marker:text-primary/70">
+						<li>Gestionar, administrar y prestar los servicios contratados.</li>
+						<li>Mejorar la experiencia de usuario y adaptar los servicios a sus preferencias.</li>
+						<li>Realizar análisis estadísticos sobre el uso de la plataforma.</li>
+						<li>Enviar actualizaciones de servicio, información técnica y comunicados comerciales (propios o de terceros) si usted lo autoriza.</li>
+						<li>Realizar encuestas de satisfacción (opcionales).</li>
+					</ul>
+				</section>
+
+				<section id="seguridad-de-la-informacion" class="scroll-mt-32 px-6 md:px-10 py-8">
+					<h2 class="flex items-center gap-3 text-xl font-bold text-secondary mb-3">
+						<span class="flex items-center justify-center h-7 w-7 rounded-full bg-primary/15 text-primary text-sm font-bold shrink-0">3</span>
+						Seguridad de la Información
+					</h2>
+					<p class="text-secondary/80 leading-relaxed mb-4">
+						Nos comprometemos a proteger su información mediante medidas de seguridad técnicas y
+						organizativas de alto nivel:
+					</p>
+					<div class="grid sm:grid-cols-3 gap-4">
+						<div class="bg-background-main/40 border border-white/10 rounded-lg p-4">
+							<p class="font-semibold text-secondary/90 mb-1.5">Infraestructura</p>
+							<p class="text-sm text-secondary/70 leading-relaxed">
+								Sus datos se alojan en Amazon Web Services (AWS), proveedor líder mundial con
+								certificaciones de seguridad física y lógica (ISO 27001, SOC 1/2/3).
+							</p>
+						</div>
+						<div class="bg-background-main/40 border border-white/10 rounded-lg p-4">
+							<p class="font-semibold text-secondary/90 mb-1.5">Cifrado</p>
+							<p class="text-sm text-secondary/70 leading-relaxed">
+								Implementamos protocolos de cifrado de grado industrial (TLS 1.3 en tránsito y
+								AES-256 en reposo) para prevenir accesos no autorizados.
+							</p>
+						</div>
+						<div class="bg-background-main/40 border border-white/10 rounded-lg p-4">
+							<p class="font-semibold text-secondary/90 mb-1.5">Autenticación</p>
+							<p class="text-sm text-secondary/70 leading-relaxed">
+								El acceso a los servicios requiere un usuario y contraseña únicos. Recomendamos
+								activar la Autenticación de Múltiples Factores (MFA) si está disponible en su
+								plan, y mantener sus credenciales bajo estricto resguardo.
+							</p>
+						</div>
+					</div>
+				</section>
+
+				<section id="derechos-arco" class="scroll-mt-32 px-6 md:px-10 py-8">
+					<h2 class="flex items-center gap-3 text-xl font-bold text-secondary mb-3">
+						<span class="flex items-center justify-center h-7 w-7 rounded-full bg-primary/15 text-primary text-sm font-bold shrink-0">4</span>
+						Derechos de los Usuarios (ARCO+)
+					</h2>
+					<p class="text-secondary/80 leading-relaxed mb-4">
+						Usted tiene el control total sobre sus datos personales. Puede ejercitar en cualquier
+						momento sus derechos de:
+					</p>
+					<ul class="list-disc list-outside pl-5 space-y-2 text-secondary/80 leading-relaxed marker:text-primary/70">
+						<li>Acceso, Rectificación, Cancelación y Oposición (ARCO).</li>
+						<li>
+							<strong class="text-secondary/90">Portabilidad de datos:</strong> Derecho a obtener una
+							copia de sus datos en un formato legible.
+						</li>
+						<li>
+							<strong class="text-secondary/90">Supresión (Derecho al Olvido):</strong> Derecho a
+							solicitar la eliminación de sus datos personales una vez finalizada la relación
+							contractual, sujeto a obligaciones legales de retención.
+						</li>
+					</ul>
+					<p class="text-secondary/80 leading-relaxed mt-4">
+						Para ejercer estos derechos, comuníquese a través de nuestro formulario de contacto
+						oficial o los medios de correo electrónico
+						<a href="mailto:info@posexpress.mx" class="text-primary hover:underline">info@posexpress.mx</a>
+						habilitados en nuestro sitio web.
+					</p>
+				</section>
+
+				<section id="notificacion-de-incidentes" class="scroll-mt-32 px-6 md:px-10 py-8">
+					<h2 class="flex items-center gap-3 text-xl font-bold text-secondary mb-3">
+						<span class="flex items-center justify-center h-7 w-7 rounded-full bg-primary/15 text-primary text-sm font-bold shrink-0">5</span>
+						Notificación de Incidentes
+					</h2>
+					<p class="text-secondary/80 leading-relaxed">
+						Aunque las medidas en Internet no son inexpugnables, nos comprometemos a actuar con
+						transparencia. En caso de una brecha de seguridad que comprometa la integridad de sus
+						datos personales, Sistemas POSEXPRESS S.A.S. de C.V. notificará a los usuarios afectados
+						en un plazo no mayor a 72 horas después de la detección del incidente.
+					</p>
+				</section>
+
+				<section id="modificaciones" class="scroll-mt-32 px-6 md:px-10 py-8">
+					<h2 class="flex items-center gap-3 text-xl font-bold text-secondary mb-3">
+						<span class="flex items-center justify-center h-7 w-7 rounded-full bg-primary/15 text-primary text-sm font-bold shrink-0">6</span>
+						Modificaciones a la Política
+					</h2>
+					<p class="text-secondary/80 leading-relaxed mb-4">
+						Nos reservamos el derecho de actualizar esta política para reflejar cambios en nuestras
+						prácticas o requerimientos legales.
+					</p>
+					<ul class="list-disc list-outside pl-5 space-y-2 text-secondary/80 leading-relaxed marker:text-primary/70">
+						<li>Los cambios significativos serán comunicados mediante avisos destacados en la plataforma o correo electrónico.</li>
+						<li>Las versiones anteriores permanecerán archivadas y disponibles para su consulta.</li>
+						<li>No reduciremos sus derechos bajo esta política sin su consentimiento expreso.</li>
+					</ul>
+					<p class="text-secondary/80 leading-relaxed mt-4">
+						Esta política de privacidad y seguridad de Sistemas POSEXPRESS S.A.S. de C.V. establece
+						una base sólida para la gestión de datos. Verificar la última actualización.
+					</p>
+				</section>
+
+			</div>
+		</div>
+	</main>
+
+	<Footer />
+</Layout>

@@ -1,0 +1,567 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const sections = [
+	{ id: 'derechos-de-autor', n: 1, title: 'Derechos de Autor' },
+	{ id: 'actualizaciones', n: 2, title: 'Actualizaciones' },
+	{ id: 'otras-restricciones', n: 3, title: 'Otras Restricciones' },
+	{ id: 'accesos-multiples', n: 4, title: 'Accesos Múltiples' },
+	{ id: 'servicio', n: 5, title: 'Servicio' },
+	{ id: 'obligaciones', n: 6, title: 'Obligaciones' },
+	{ id: 'comercializacion', n: 7, title: 'Comercialización' },
+	{ id: 'baja-del-servicio', n: 8, title: 'Baja del Servicio' },
+	{ id: 'reembolsos-y-cancelacion', n: 9, title: 'Política de Reembolsos y Cancelación' },
+	{ id: 'recargas-y-pago-de-servicios', n: 10, title: 'Condiciones Específicas para Recargas y Pago de Servicios' },
+	{ id: 'uso-y-disputas', n: 11, title: 'Uso del Servicio, Cancelación y Disputas' },
+	{ id: 'cargos-recurrentes', n: 12, title: 'Autorización de Cargos Recurrentes' },
+];
+---
+
+<Layout
+	title="Términos y Condiciones de Servicio | POS EXPRESS"
+	description="Términos y Condiciones de Servicio de Sistemas POSExpress."
+>
+	<Header />
+
+	<main class="pt-40 pb-24">
+		<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+			<h1 class="text-3xl md:text-4xl font-extrabold text-secondary mb-3">
+				Términos y Condiciones de Servicio
+			</h1>
+			<p class="text-secondary/50 text-sm max-w-2xl mb-10">
+				Este contrato es la acreditación de su licencia para el uso gratuito o pago del sistema
+				web para Windows o Android. Tiene valor legal.
+			</p>
+
+			<!-- Intro -->
+			<div class="border-l-4 border-primary bg-background-alt/40 rounded-r-xl px-6 py-5 space-y-4 text-secondary/80 leading-relaxed mb-10">
+				<p>
+					El contrato de licencia que está leyendo es un contrato legal entre usted (en adelante
+					"EL USUARIO") y Sistemas POSExpress (en adelante "El LICENCIATARIO") sobre el uso del
+					sistema de punto de venta web y android y todos sus elementos (literatura, imágenes,
+					animación, logotipos o cualquier otro elemento que acompañe) en adelante "El Software".
+				</p>
+				<p>
+					El sistema POSExpress es un sistema centralizado al cual se accede directamente a
+					través de un navegador de Internet, sin necesidad de que el usuario instale ningún
+					tipo de programa o software en su computadora o dispositivo electrónico, a excepción
+					de ciertos complementos que puedan agregar funcionalidades. La aceptación de este
+					documento da por sentado que El USUARIO conoce el uso de navegadores de Internet y
+					posee alguno correctamente instalado, configurado y ha leído y comprendido el acuerdo
+					de Licencia que impone EL LICENCIATARIO.
+				</p>
+			</div>
+
+			<!-- Table of contents -->
+			<nav aria-label="Índice" class="bg-background-alt/40 border border-white/10 rounded-xl p-6 mb-12">
+				<h2 class="text-sm font-bold uppercase tracking-wide text-secondary/50 mb-4">Índice</h2>
+				<ol class="grid sm:grid-cols-2 gap-x-8 gap-y-2">
+					{sections.map((s) => (
+						<li>
+							<a href={`#${s.id}`} class="flex gap-2 text-sm text-secondary/70 hover:text-primary transition-colors">
+								<span class="text-primary font-semibold shrink-0">{s.n}.</span>
+								<span>{s.title}</span>
+							</a>
+						</li>
+					))}
+				</ol>
+			</nav>
+
+			<!-- Content -->
+			<div class="bg-background-alt/40 border border-white/10 rounded-2xl divide-y divide-white/10">
+
+				<section id="derechos-de-autor" class="scroll-mt-32 px-6 md:px-10 py-8">
+					<h2 class="flex items-center gap-3 text-xl font-bold text-secondary mb-3">
+						<span class="flex items-center justify-center h-7 w-7 rounded-full bg-primary/15 text-primary text-sm font-bold shrink-0">1</span>
+						Derechos de Autor
+					</h2>
+					<p class="text-secondary/80 leading-relaxed">
+						El software, así como todas las imágenes, diseños, textos, fotografías, animación son
+						propiedad de EL LICENCIATARIO y de sus proveedores y está protegido por las leyes de
+						cada país en donde se comercializa el producto y por las disposiciones y tratados
+						internacionales en la materia.
+					</p>
+				</section>
+
+				<section id="actualizaciones" class="scroll-mt-32 px-6 md:px-10 py-8">
+					<h2 class="flex items-center gap-3 text-xl font-bold text-secondary mb-3">
+						<span class="flex items-center justify-center h-7 w-7 rounded-full bg-primary/15 text-primary text-sm font-bold shrink-0">2</span>
+						Actualizaciones
+					</h2>
+					<p class="text-secondary/80 leading-relaxed">
+						Toda actualización del presente SOFTWARE se realizará directamente en el servidor
+						principal sin necesidad de generar un aviso previo por parte de EL LICENCIATARIO a
+						los USUARIOS.
+					</p>
+				</section>
+
+				<section id="otras-restricciones" class="scroll-mt-32 px-6 md:px-10 py-8">
+					<h2 class="flex items-center gap-3 text-xl font-bold text-secondary mb-3">
+						<span class="flex items-center justify-center h-7 w-7 rounded-full bg-primary/15 text-primary text-sm font-bold shrink-0">3</span>
+						Otras Restricciones
+					</h2>
+					<p class="text-secondary/80 leading-relaxed">
+						No se puede ceder, alquilar, arrendar o transferir en forma alguna los derechos del
+						software. No se puede realizar "descompilación" de EL SOFTWARE ni ninguna otra forma
+						de ingeniería inversa.
+					</p>
+				</section>
+
+				<section id="accesos-multiples" class="scroll-mt-32 px-6 md:px-10 py-8">
+					<h2 class="flex items-center gap-3 text-xl font-bold text-secondary mb-3">
+						<span class="flex items-center justify-center h-7 w-7 rounded-full bg-primary/15 text-primary text-sm font-bold shrink-0">4</span>
+						Accesos Múltiples
+					</h2>
+					<p class="text-secondary/80 leading-relaxed">
+						EL USUARIO podrá acceder al sistema desde distintos equipos, siempre y cuando EL
+						LICENCIATARIO lo habilite para esto.
+					</p>
+				</section>
+
+				<section id="servicio" class="scroll-mt-32 px-6 md:px-10 py-8">
+					<h2 class="flex items-center gap-3 text-xl font-bold text-secondary mb-3">
+						<span class="flex items-center justify-center h-7 w-7 rounded-full bg-primary/15 text-primary text-sm font-bold shrink-0">5</span>
+						Servicio
+					</h2>
+					<p class="text-secondary/80 leading-relaxed mb-4">
+						EL LICENCIATARIO detalla los módulos que consta nuestro servicio:
+					</p>
+					<ol class="list-[lower-alpha] list-outside pl-5 space-y-4 text-secondary/80 leading-relaxed marker:font-semibold marker:text-primary">
+						<li>
+							Acceso al sistema las 24 hs los 365 días del año, salvo problemas de conexión o
+							mantenimiento de servidores ajenos a EL LICENCIATARIO, por parte de proveedores o
+							fallas temporales en el sistema o salvo tiempos acotados destinados a tareas de
+							actualización o mejoras del servicio.
+						</li>
+						<li>
+							Actualizaciones del sistema, las mismas se realizarán de modo remoto y a criterio
+							de El LICENCIATARIO, sin necesidad de comunicar de estas acciones al USUARIO,
+							intentando mantener en todo momento el sistema de modo operativo, pero con posibles
+							momentos de interrupción a partir de las 23 Horas en adelante.
+						</li>
+						<li>
+							Soporte técnico, estará disponible solo para usuarios con pagos al corriente. El
+							mismo se realizará de modo remoto a través del canal de Internet o de modo
+							telefónico.
+						</li>
+						<li>
+							Capacitación remota, también estará disponible solamente para usuarios con pagos
+							al corriente. La modalidad será coordinada puntualmente con cada cliente.
+						</li>
+					</ol>
+				</section>
+
+				<section id="obligaciones" class="scroll-mt-32 px-6 md:px-10 py-8">
+					<h2 class="flex items-center gap-3 text-xl font-bold text-secondary mb-3">
+						<span class="flex items-center justify-center h-7 w-7 rounded-full bg-primary/15 text-primary text-sm font-bold shrink-0">6</span>
+						Obligaciones
+					</h2>
+					<p class="text-secondary/80 leading-relaxed">
+						El LICENCIATARIO se obliga a mantener el sistema en línea las 24hs los 365 días del
+						año, para que EL USUARIO pueda acceder y hacer uso del mismo, salvo problemas de
+						conexión, errores temporales del Software, mantenimiento de servidores o problemas
+						ajenos a EL LICENCIATARIO. Se obliga también a prestar garantías de mantenimiento de
+						uso descriptas en el punto (5) SERVICIOS, así mismo EL USUARIO se obliga a pagar el
+						monto acordado en concepto de Pago por el uso del sistema en la versión con
+						suscripción. La mora inmediata es motivo para que EL LICENCIATARIO interrumpa el
+						acceso al sistema para EL USUARIO en mora, mantenimiento y garantía e invalide el uso
+						de la/s LICENCIAS adquiridas por EL USUARIO.
+					</p>
+				</section>
+
+				<section id="comercializacion" class="scroll-mt-32 px-6 md:px-10 py-8">
+					<h2 class="flex items-center gap-3 text-xl font-bold text-secondary mb-3">
+						<span class="flex items-center justify-center h-7 w-7 rounded-full bg-primary/15 text-primary text-sm font-bold shrink-0">7</span>
+						Comercialización
+					</h2>
+					<p class="text-secondary/80 leading-relaxed">
+						El sistema se ofrece tanto en la modalidad de pago mensual como de pago anual. Ambas
+						modalidades permiten al USUARIO el acceso a la totalidad de las herramientas
+						disponibles, múltiples usuarios y soporte técnico sin cargo mientras que esté
+						suscrito al servicio. El monto del pago es determinado por el LICENCIATARIO. En el
+						caso del pago mensual, el pago debe ser cancelado dentro de los primeros 10 días de
+						cada mes a través de los medios que EL LICENCIATARIO disponga habilitando el uso del
+						mismo. No estará a cargo de EL LICENCIATARIO el mantenimiento del hardware sobre el
+						cual opere el SOFTWARE. Estando pagado el importe correspondiente, EL USUARIO contará
+						con los siguientes servicios: Asistencia, capacitación y asesoramiento de modo remoto,
+						mantenimiento del sistema y actualización de nuevas herramientas o módulos. La mora
+						del pago de dicho pago otorga a El LICENCIATARIO el derecho de restringir los
+						servicios prestados; pudiendo determinar la baja definitiva del mismo.
+					</p>
+				</section>
+
+				<section id="baja-del-servicio" class="scroll-mt-32 px-6 md:px-10 py-8">
+					<h2 class="flex items-center gap-3 text-xl font-bold text-secondary mb-3">
+						<span class="flex items-center justify-center h-7 w-7 rounded-full bg-primary/15 text-primary text-sm font-bold shrink-0">8</span>
+						Baja del Servicio
+					</h2>
+					<p class="text-secondary/80 leading-relaxed">
+						En el caso en el que EL USUARIO por cualquier motivo decidiera dejar de utilizar el
+						SOFTWARE, para cualquiera de las versiones disponibles, este deberá comunicar a EL
+						LICENCIATARIO, a través de los medios electrónicos disponibles, tal decisión. Poniendo
+						EL LICENCIATARIO toda la información que EL USUARIO haya registrado en el sistema a su
+						disposición, en formato digital y eliminando tales registros del Sistema. En el caso
+						de USUARIOS con abono, estos no deberán registrar pagos pendientes al momento de
+						realizar la baja en el Sistema.
+					</p>
+				</section>
+
+				<section id="reembolsos-y-cancelacion" class="scroll-mt-32 px-6 md:px-10 py-8">
+					<h2 class="flex items-center gap-3 text-xl font-bold text-secondary mb-5">
+						<span class="flex items-center justify-center h-7 w-7 rounded-full bg-primary/15 text-primary text-sm font-bold shrink-0">9</span>
+						Política de Reembolsos y Cancelación
+					</h2>
+
+					<div class="space-y-6 text-secondary/80 leading-relaxed">
+						<div>
+							<h3 class="text-base font-semibold text-secondary mb-2">9.1. Cancelaciones</h3>
+							<p class="mb-3">
+								Los clientes tienen derecho a cancelar de forma total o parcial su suscripción en
+								cualquier momento. Las cancelaciones deben solicitarse por escrito a través de
+								nuestro servicio de atención al cliente enviando un correo electrónico a
+								<a href="mailto:ventas@posexpress.mx" class="text-primary hover:underline">ventas@posexpress.mx</a>
+								declarando la intención de cancelación por el motivo que al interesado convenga
+								desde el correo del titular de la cuenta POSExpress. Las cancelaciones se harán
+								efectivas al final del período de facturación actual.
+							</p>
+							<p class="mb-2">
+								Sistemas POSExpress se reserva el derecho de cancelar el servicio sin previo aviso
+								en los siguientes escenarios:
+							</p>
+							<ul class="list-disc list-outside pl-5 space-y-1.5 marker:text-primary/70">
+								<li>Uso indebido del servicio.</li>
+								<li>Cuando se detecte que el usuario incurre en una actividad fraudulenta.</li>
+								<li>Cuando la cuenta presente una deuda.</li>
+								<li>Siempre que no se cumplan los términos y condiciones de uso.</li>
+							</ul>
+						</div>
+
+						<div>
+							<h3 class="text-base font-semibold text-secondary mb-2">9.2. Reembolsos</h3>
+							<p>
+								Para cualquier compra realizada a través de posexpress.mx los clientes pueden
+								solicitar un reembolso dentro de las primeras 72 horas después de realizado el
+								pago. Para solicitar un reembolso, los clientes deben ponerse en contacto con
+								nuestro servicio de atención al cliente y proporcionar los comprobantes de la
+								operación y el motivo del reembolso. Toda solicitud de reembolso puede demorar
+								hasta 48 horas en ser aprobada. Sistemas POSExpress no se responsabiliza por el
+								plazo de reembolso de la entidad bancaria.
+							</p>
+						</div>
+
+						<div>
+							<h3 class="text-base font-semibold text-secondary mb-2">9.3. Cambios en la Política</h3>
+							<p>
+								Nos reservamos el derecho de modificar o actualizar esta política en cualquier
+								momento sin previo aviso. Se notificará a los clientes sobre cualquier cambio en
+								la política a través de nuestro sitio web o por correo electrónico. Al continuar
+								utilizando nuestro servicio, usted acepta los términos y condiciones de nuestra
+								política de reembolso y cancelación.
+							</p>
+						</div>
+
+						<div>
+							<h3 class="text-base font-semibold text-secondary mb-2">9.4. Cambios de Plan</h3>
+							<ul class="list-disc list-outside pl-5 space-y-3 marker:text-primary/70">
+								<li>
+									<strong class="text-secondary/90">Actualizaciones a su suscripción</strong> (cambio
+									a un plan superior): El cambio entrará en vigencia de forma inmediata. Se
+									aplicará un cargo proporcional por la diferencia de precio entre el plan
+									anterior y el nuevo, correspondiente a los días restantes del período de
+									facturación en curso. Dicho cargo será cobrado al momento de confirmar el
+									cambio.
+								</li>
+								<li>
+									<strong class="text-secondary/90">Actualizaciones a planes inferiores</strong>
+									(cambio a un plan inferior): El cambio se aplicará únicamente a partir del
+									inicio del próximo período de facturación. Durante el período en curso, el
+									usuario mantendrá el plan vigente con todas sus funcionalidades y condiciones.
+								</li>
+								<li>
+									<strong class="text-secondary/90">Cambios realizados por error:</strong>
+									Sistemas POSExpress no se responsabiliza por cambios de plan realizados por el
+									usuario de forma no intencional. Todo cambio de plan requiere una acción activa
+									y confirmación explícita por parte del usuario dentro de la plataforma. En caso
+									de Actualización realizado por error, no corresponde reembolso del cargo
+									proporcional cobrado, siendo de aplicación la política de reembolsos general
+									del punto 9.2.
+								</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+
+				<section id="recargas-y-pago-de-servicios" class="scroll-mt-32 px-6 md:px-10 py-8">
+					<h2 class="flex items-center gap-3 text-xl font-bold text-secondary mb-5">
+						<span class="flex items-center justify-center h-7 w-7 rounded-full bg-primary/15 text-primary text-sm font-bold shrink-0">10</span>
+						Condiciones Específicas para Recargas, Pago de Servicios
+					</h2>
+
+					<div class="space-y-6 text-secondary/80 leading-relaxed">
+						<p>
+							Las presentes disposiciones complementan los términos del contrato de licencia
+							descrito y forman parte integral de los Términos de Servicio generales de Sistemas
+							POSEXpress. En caso de cualquier divergencia, prevalecerán estas condiciones
+							específicas respecto del uso de la funcionalidad de Recargas y Pago de Servicios.
+						</p>
+
+						<div>
+							<h3 class="text-base font-semibold text-secondary mb-2">10.1. Introducción y Alcance</h3>
+							<p>
+								Las presentes condiciones regulan el uso de la funcionalidad de venta de recargas
+								y pago de servicios (el "Servicio") que Sistemas POSExpress pone a disposición de
+								EL USUARIO dentro de la plataforma WEB POSEXPRESS. El Servicio es procesado por
+								la RED+, quien administra los saldos independientes de cada USUARIO bajo un
+								esquema de prepago. POSEXPRESS únicamente actúa como intermediario tecnológico,
+								sin participar en la custodia de fondos.
+							</p>
+						</div>
+
+						<div>
+							<h3 class="text-base font-semibold text-secondary mb-2">10.2. Definiciones</h3>
+							<dl class="space-y-2">
+								<div class="flex flex-col sm:flex-row sm:gap-2">
+									<dt class="font-semibold text-secondary/90 shrink-0">LA RED+:</dt>
+									<dd>Procesador de recargas y pagos, responsable de los saldos de EL USUARIO.</dd>
+								</div>
+								<div class="flex flex-col sm:flex-row sm:gap-2">
+									<dt class="font-semibold text-secondary/90 shrink-0">Usuarios Finales:</dt>
+									<dd>Consumidores que adquieren recargas o realizan pagos de servicios a través de EL USUARIO.</dd>
+								</div>
+								<div class="flex flex-col sm:flex-row sm:gap-2">
+									<dt class="font-semibold text-secondary/90 shrink-0">Proveedores de Servicios:</dt>
+									<dd>Empresas que prestan los servicios subyacentes (telefonía, energía, TV, etc.) y que tienen convenio con LA RED+.</dd>
+								</div>
+								<div class="flex flex-col sm:flex-row sm:gap-2">
+									<dt class="font-semibold text-secondary/90 shrink-0">Bolsa de Saldo:</dt>
+									<dd>Fondo prepago independiente que cada USUARIO mantiene en LA RED+.</dd>
+								</div>
+							</dl>
+						</div>
+
+						<div>
+							<h3 class="text-base font-semibold text-secondary mb-2">10.3. Funcionamiento del Servicio</h3>
+							<p>
+								EL USUARIO debe cargar saldo en LA RED+ para poder ofrecer recargas y pagos de
+								servicios. Las operaciones solo se ejecutan si existe saldo suficiente en la
+								Bolsa de Saldo. Una vez confirmada la transacción, los pagos son finales y no
+								reembolsables, salvo error técnico atribuible a la plataforma. POSEXPRESS no
+								administra ni custodia fondos de EL USUARIO ni de los Usuarios Finales.
+							</p>
+						</div>
+
+						<div>
+							<h3 class="text-base font-semibold text-secondary mb-2">10.4. Comisiones y Cargos</h3>
+							<div class="space-y-2">
+								<div class="flex gap-3">
+									<span class="font-semibold text-primary shrink-0">10.4.1</span>
+									<p>Los cargos y totales a pagar se muestran en la interfaz de Sistemas POSEXpress antes de confirmar la operación.</p>
+								</div>
+								<div class="flex gap-3">
+									<span class="font-semibold text-primary shrink-0">10.4.2</span>
+									<p>EL USUARIO no podrá cobrar cantidades distintas a las que aparecen en Sistemas POSEXpress.</p>
+								</div>
+								<div class="flex gap-3">
+									<span class="font-semibold text-primary shrink-0">10.4.3</span>
+									<p>Esta política constituye una excepción frente a la política de reembolsos generales de Sistemas POSEXpress y prevalece en lo relativo a esta funcionalidad.</p>
+								</div>
+							</div>
+						</div>
+
+						<div>
+							<h3 class="text-base font-semibold text-secondary mb-2">10.5. Disponibilidad</h3>
+							<p>
+								El Servicio estará disponible las 24 horas, los 365 días del año, sujeto a la
+								disponibilidad de la plataforma de LA RED+ y a la conectividad de EL USUARIO.
+							</p>
+						</div>
+
+						<div>
+							<h3 class="text-base font-semibold text-secondary mb-3">10.6. Responsabilidades</h3>
+							<div class="grid sm:grid-cols-2 gap-4">
+								<div class="bg-background-main/40 border border-white/10 rounded-lg p-4">
+									<p class="font-semibold text-secondary/90 mb-2">Sistemas POSEXpress</p>
+									<ul class="list-disc list-outside pl-4 space-y-1.5 text-sm marker:text-primary/70">
+										<li>Provee únicamente la interfaz tecnológica.</li>
+										<li>No es proveedor del servicio vendido ni responsable del saldo de EL USUARIO.</li>
+										<li>No asume responsabilidad por fallas atribuibles a LA RED+ o a los Proveedores de Servicios.</li>
+									</ul>
+								</div>
+								<div class="bg-background-main/40 border border-white/10 rounded-lg p-4">
+									<p class="font-semibold text-secondary/90 mb-2">LA RED+</p>
+									<ul class="list-disc list-outside pl-4 space-y-1.5 text-sm marker:text-primary/70">
+										<li>Procesa las recargas y administra los saldos de EL USUARIO.</li>
+										<li>No ofrece soporte directo a EL USUARIO ni a Usuarios Finales.</li>
+									</ul>
+								</div>
+								<div class="bg-background-main/40 border border-white/10 rounded-lg p-4">
+									<p class="font-semibold text-secondary/90 mb-2">EL USUARIO</p>
+									<ul class="list-disc list-outside pl-4 space-y-1.5 text-sm marker:text-primary/70">
+										<li>Informan correctamente al Usuario Final el total a pagar antes de confirmar.</li>
+										<li>Son responsables de contar con saldo suficiente.</li>
+										<li>No podrán cobrar montos adicionales a los autorizados por Sistemas POSEXpress.</li>
+									</ul>
+								</div>
+								<div class="bg-background-main/40 border border-white/10 rounded-lg p-4">
+									<p class="font-semibold text-secondary/90 mb-2">Usuarios Finales</p>
+									<ul class="list-disc list-outside pl-4 space-y-1.5 text-sm marker:text-primary/70">
+										<li>Reconocen que Sistemas POSEXPRESS es únicamente un intermediario tecnológico.</li>
+										<li>Aceptan que las operaciones son definitivas.</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<div>
+							<h3 class="text-base font-semibold text-secondary mb-2">10.7. Soporte y Atención</h3>
+							<p>
+								El canal exclusivo de soporte es a través de
+								<a href="mailto:soporte@posexpress.mx" class="text-primary hover:underline">soporte@posexpress.mx</a>,
+								disponible para EL USUARIO que tenga habilitada la funcionalidad de Recargas y
+								Pago de Servicios, independientemente de su modalidad de abono.
+							</p>
+						</div>
+
+						<div>
+							<h3 class="text-base font-semibold text-secondary mb-2">10.8. Propiedad Intelectual</h3>
+							<p>
+								Las marcas, logotipos, nombres comerciales y demás elementos de POSEXPESS, LA
+								RED+ y Proveedores están protegidos por la legislación aplicable.
+							</p>
+						</div>
+
+						<div>
+							<h3 class="text-base font-semibold text-secondary mb-2">10.9. Cláusulas Adicionales de Protección</h3>
+							<div class="space-y-3">
+								<p>
+									<strong class="text-secondary/90">10.9.1. Exclusión de responsabilidad económica.</strong>
+									Sistemas POSEXPRESS no recibe, administra ni custodia fondos de EL USUARIO ni de
+									los Usuarios Finales. No será responsable de reembolsos, devoluciones ni de la
+									gestión de saldos, siendo estas responsabilidades exclusivas de LA RED+ y de EL
+									USUARIO.
+								</p>
+								<p>
+									<strong class="text-secondary/90">10.9.2. Responsabilidad de EL USUARIO frente a terceros.</strong>
+									EL USUARIO será el único responsable frente a los Usuarios Finales por cobros
+									indebidos, errores en la captura de datos o cualquier incumplimiento, eximiendo
+									a Sistemas POSEXPRESS de cualquier reclamación. Sistemas POSEXPRESS podrá
+									suspender o bloquear el acceso al Servicio a EL USUARIO que incumpla.
+								</p>
+								<p>
+									<strong class="text-secondary/90">10.9.3. Limitación de responsabilidad de Sistemas POSEXPRESS.</strong>
+									La responsabilidad máxima de Sistemas POSEXPRESS se limita al correcto
+									funcionamiento de la interfaz tecnológica. Sistemas POSEXPRESS no será
+									responsable de pérdidas económicas, lucro cesante o daños indirectos derivados
+									del uso del Servicio.
+								</p>
+								<p>
+									<strong class="text-secondary/90">10.9.4. Protección de datos personales.</strong>
+									Los datos recabados para procesar operaciones se tratarán conforme al
+									<a href="/privacidad" class="text-primary hover:underline">Aviso de Privacidad</a>
+									de Sistemas POSEXPRESS y únicamente para fines de prestación del Servicio.
+									Sistemas POSEXPRESS no compartirá ni usará los datos para fines distintos.
+								</p>
+							</div>
+						</div>
+
+						<div>
+							<h3 class="text-base font-semibold text-secondary mb-2">10.10. Modificaciones</h3>
+							<p>
+								Sistemas POSEXPRESS podrá modificar en cualquier momento las presentes
+								condiciones específicas para Recargas y Pago de Servicios. Dichas modificaciones
+								entrarán en vigor a partir de su publicación en la plataforma de POSEXPRESS,
+								siendo responsabilidad de EL USUARIO revisar periódicamente los Términos y
+								Condiciones vigentes.
+							</p>
+						</div>
+					</div>
+				</section>
+
+				<section id="uso-y-disputas" class="scroll-mt-32 px-6 md:px-10 py-8">
+					<h2 class="flex items-center gap-3 text-xl font-bold text-secondary mb-3">
+						<span class="flex items-center justify-center h-7 w-7 rounded-full bg-primary/15 text-primary text-sm font-bold shrink-0">11</span>
+						Uso del Servicio, Cancelación y Disputas
+					</h2>
+					<div class="space-y-4 text-secondary/80 leading-relaxed">
+						<p>
+							El usuario reconoce y acepta que al contratar los servicios de Sistemas POSEXPRESS,
+							está autorizando los cargos correspondientes al plan seleccionado, ya sean únicos
+							o recurrentes, según aplique.
+						</p>
+						<p>
+							El servicio se considerará activo mientras no exista una solicitud formal de
+							cancelación por parte del usuario a través de los canales oficiales de atención.
+						</p>
+						<p>
+							El uso continuo de la plataforma, incluyendo pero no limitado a accesos, registros
+							de actividad, transacciones o cualquier interacción dentro del sistema, constituye
+							evidencia de aceptación y conformidad con el servicio, así como de los cargos
+							asociados al mismo.
+						</p>
+						<p>
+							La falta de uso del sistema, ya sea total o parcial, no exime al usuario de sus
+							obligaciones de pago ni invalida los cargos realizados mientras el servicio
+							permanezca activo. Es responsabilidad exclusiva del usuario solicitar la
+							cancelación del servicio si desea evitar cargos futuros. Las cancelaciones surtirán
+							efecto conforme a los términos establecidos en la sección de cancelaciones.
+						</p>
+						<p>
+							En caso de que el usuario inicie una disputa, contracargo o reclamación bancaria
+							por cargos previamente realizados, Sistemas POSEXpress se reserva el derecho de
+							presentar como evidencia el historial de uso del servicio, así como la falta de
+							solicitud de cancelación, la aceptación de los términos y condiciones y cualquier
+							otra información que demuestre la validez del cargo.
+						</p>
+						<p>
+							Asimismo, Sistemas POSEXPRESS podrá suspender o cancelar de forma inmediata la
+							cuenta del usuario en caso de detectar disputas injustificadas o actividad
+							fraudulenta.
+						</p>
+					</div>
+				</section>
+
+				<section id="cargos-recurrentes" class="scroll-mt-32 px-6 md:px-10 py-8">
+					<h2 class="flex items-center gap-3 text-xl font-bold text-secondary mb-3">
+						<span class="flex items-center justify-center h-7 w-7 rounded-full bg-primary/15 text-primary text-sm font-bold shrink-0">12</span>
+						Autorización de Cargos Recurrentes
+					</h2>
+					<div class="space-y-4 text-secondary/80 leading-relaxed">
+						<p>
+							El usuario autoriza expresamente a Sistemas POSEXPRESS SAS DE CV a realizar cargos
+							automáticos y recurrentes a la tarjeta bancaria, método de pago o medio de cobro
+							registrado al momento de la contratación.
+						</p>
+						<p>
+							Al proporcionar sus datos de pago, el usuario acepta que estos podrán ser
+							almacenados de forma segura a través de nuestros proveedores de pago, con el único
+							fin de procesar cargos futuros correspondientes al servicio contratado.
+						</p>
+						<p>
+							El usuario reconoce que dichos cargos se realizarán de manera automática en cada
+							periodo de facturación, sin necesidad de una autorización adicional por cada
+							transacción.
+						</p>
+						<p>
+							La autorización permanecerá vigente mientras la cuenta del usuario se encuentre
+							activa y no se haya solicitado formalmente la cancelación del servicio.
+						</p>
+						<p>
+							Es responsabilidad del usuario asegurarse de cancelar su suscripción antes del
+							siguiente ciclo de facturación si no desea que se generen nuevos cargos.
+						</p>
+						<p>
+							En caso de que el usuario no reconozca un cargo, SISTEMAS POS EXPRESS SAS DE CV
+							podrá presentar como evidencia la aceptación de esta autorización, así como el
+							historial de uso del servicio y los registros de facturación correspondientes.
+						</p>
+					</div>
+				</section>
+
+			</div>
+		</div>
+	</main>
+
+	<Footer />
+</Layout>
