@@ -1,102 +1,141 @@
 ---
-// Pricing.astro
-const phoneNumber = "5219983206505";
-const plans = [
-  {
-    name: "Start",
-    subtitle: "Emprendedor",
-    priceMonthly: "$249",
-    priceAnnual: "$2,400",
-    period: "/mes",
-    description: "Ideal para pequeños negocios que están comenzando.",
-    features: [
-      "Hasta 1,000 productos",
-      "Hasta 1,000 clientes",
-      "3 usuarios (1 Admin + 2 Caja)",
-      "1 sucursal",
-      "Inventario incluido",
-      "CFDI según paquetes",
-      "Historiales ilimitados",
-      "Almacén",
-      "Apartados y créditos",
-      "Dashboard en tiempo real",
-      "Corte de caja y acumulado",
-    ],
-    notIncluded: [
-      "Cotizaciones",
-      "Órdenes de compra",
-      "Cuentas por pagar",
-      "App Móvil TPV",
-      "API e/s",
-      "Alertas",
-    ],
-    buttonText: "Elegir Start",
-    isPopular: false,
-  },
-  {
-    name: "Pro",
-    subtitle: "En Crecimiento",
-    priceMonthly: "$299",
-    priceAnnual: "$3,000",
-    period: "/mes",
-    description: "Para negocios en crecimiento que necesitan más poder.",
-    features: [
-      "Productos ilimitados",
-      "Clientes ilimitados",
-      "Hasta 10 usuarios + Roles",
-      "1 sucursal (adic. +$299)",
-      "Inventario incluido",
-      "CFDI según paquetes",
-      "Historiales ilimitados",
-      "Cotizaciones",
-      "Órdenes de compra",
-      "Cuentas por pagar",
-      "App Móvil modo TPV",
-      "Apartados y créditos",
-      "Dashboard en tiempo real",
-      "Alertas",
-      "Todos los reportes",
-      "Rank de productos y clientes",
-    ],
-    notIncluded: [
-      "API e/s",
-    ],
-    buttonText: "Comenzar Prueba Gratis",
-    isPopular: true,
-  },
-  {
-    name: "Business",
-    subtitle: "Multisucursal",
-    priceMonthly: "$449",
-    priceAnnual: "$4,800",
-    period: "/mes",
-    description: "Para cadenas y negocios con múltiples sucursales.",
-    features: [
-      "Productos ilimitados",
-      "Clientes ilimitados",
-      "Usuarios ilimitados",
-      "2 sucursales (adic. +$299)",
-      "Inventario personalizado",
-      "CFDI según paquetes",
-      "Historiales ilimitados",
-      "Cotizaciones",
-      "Órdenes de compra",
-      "Cuentas por pagar",
-      "Almacén personalizado",
-      "App Móvil modo TPV",
-      "Apartados y créditos",
-      "Dashboard personalizado",
-      "API e/s",
-      "Alertas personalizadas",
-      "Reportes personalizados",
-      "Finanzas y costos",
-      "Mejoras personalizadas",
-    ],
-    notIncluded: [],
-    buttonText: "Contactar Ventas",
-    isPopular: false,
-  },
-];
+// Pricing.astro - Planes dinámicos desde TPV SaaS
+const SAAS_URL = (import.meta.env.PUBLIC_SAAS_URL || 'http://localhost/tpv-saas/public').replace(/\/$/, '');
+const API_URL = `${SAAS_URL}/planes-publicos`;
+
+let plans = [];
+let fetchSuccess = false;
+
+try {
+  const response = await fetch(API_URL);
+  if (response.ok) {
+    const rawPlans = await response.json();
+    const foundPopularIndex = rawPlans.findIndex(p => p.slug === 'profesional' || p.slug === 'pro');
+    const targetPopularIndex = foundPopularIndex !== -1 ? foundPopularIndex : (rawPlans.length > 1 ? 1 : 0);
+
+    plans = rawPlans.map((plan, index) => {
+      const isPopular = index === targetPopularIndex;
+      const monthlyVal = parseFloat(plan.precio_mensual || 0);
+      const annualVal = monthlyVal * 12 * 0.83; // 17% de descuento en costo total anual
+      return {
+        name: plan.nombre,
+        subtitle: plan.slug === 'demo' ? 'Emprendedor' : plan.slug === 'basico' ? 'En Crecimiento' : 'Multisucursal',
+        priceMonthly: `$${monthlyVal.toFixed(0)}`,
+        priceAnnual: `$${annualVal.toFixed(0)}`,
+        period: "/mes",
+        description: plan.descripcion || "Acceso a módulos esenciales para la operación de tu negocio.",
+        features: plan.modulos ? plan.modulos.map(m => m.nombre) : [],
+        notIncluded: [],
+        buttonText: isPopular ? "Comenzar Prueba Gratis" : "Elegir Plan",
+        isPopular: isPopular,
+        slug: plan.slug
+      };
+    });
+    fetchSuccess = true;
+  }
+} catch (e) {
+  console.warn("No se pudo conectar a la API del TPV SaaS. Usando planes por defecto.");
+}
+
+// Fallback estático en caso de que la API no responda
+if (!fetchSuccess || plans.length === 0) {
+  plans = [
+    {
+      name: "Start",
+      subtitle: "Emprendedor",
+      priceMonthly: "$249",
+      priceAnnual: "$2,400",
+      period: "/mes",
+      description: "Ideal para pequeños negocios que están comenzando.",
+      features: [
+        "Hasta 1,000 productos",
+        "Hasta 1,000 clientes",
+        "3 usuarios (1 Admin + 2 Caja)",
+        "1 sucursal",
+        "Inventario incluido",
+        "CFDI según paquetes",
+        "Historiales ilimitados",
+        "Almacén",
+        "Apartados y créditos",
+        "Dashboard en tiempo real",
+        "Corte de caja y acumulado",
+      ],
+      notIncluded: [
+        "Cotizaciones",
+        "Órdenes de compra",
+        "Cuentas por pagar",
+        "App Móvil TPV",
+        "API e/s",
+        "Alertas",
+      ],
+      buttonText: "Elegir Start",
+      isPopular: false,
+    },
+    {
+      name: "Pro",
+      subtitle: "En Crecimiento",
+      priceMonthly: "$299",
+      priceAnnual: "$3,000",
+      period: "/mes",
+      description: "Para negocios en crecimiento que necesitan más poder.",
+      features: [
+        "Productos ilimitados",
+        "Clientes ilimitados",
+        "Hasta 10 usuarios + Roles",
+        "1 sucursal (adic. +$299)",
+        "Inventario incluido",
+        "CFDI según paquetes",
+        "Historiales ilimitados",
+        "Cotizaciones",
+        "Órdenes de compra",
+        "Cuentas por pagar",
+        "App Móvil modo TPV",
+        "Apartados y créditos",
+        "Dashboard en tiempo real",
+        "Alertas",
+        "Todos los reportes",
+        "Rank de productos y clientes",
+      ],
+      notIncluded: [
+        "API e/s",
+      ],
+      buttonText: "Comenzar Prueba Gratis",
+      isPopular: true,
+    },
+    {
+      name: "Business",
+      subtitle: "Multisucursal",
+      priceMonthly: "$449",
+      priceAnnual: "$4,800",
+      period: "/mes",
+      description: "Para cadenas y negocios con múltiples sucursales.",
+      features: [
+        "Productos ilimitados",
+        "Clientes ilimitados",
+        "Usuarios ilimitados",
+        "2 sucursales (adic. +$299)",
+        "Inventario personalizado",
+        "CFDI según paquetes",
+        "Historiales ilimitados",
+        "Cotizaciones",
+        "Órdenes de compra",
+        "Cuentas por pagar",
+        "Almacén personalizado",
+        "App Móvil modo TPV",
+        "Apartados y créditos",
+        "Dashboard personalizado",
+        "API e/s",
+        "Alertas personalizadas",
+        "Reportes personalizados",
+        "Finanzas y costos",
+        "Mejoras personalizadas",
+      ],
+      notIncluded: [],
+      buttonText: "Contactar Ventas",
+      isPopular: false,
+    },
+  ];
+}
 
 // Comparison table data
 const comparisonRows = [
@@ -196,7 +235,7 @@ const comparisonRows = [
           </ul>
 
           <a 
-            href="https://posexpress.mx/app/"
+            href={`${SAAS_URL}/registro`}
             class={`block w-full py-4 px-6 rounded-full font-bold text-center transition-all duration-300 transform hover:-translate-y-0.5 ${plan.isPopular ? 'bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20' : 'bg-background-alt/50 hover:bg-background-alt text-secondary border border-white/10'}`}
           >
             {plan.buttonText}
