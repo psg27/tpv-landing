@@ -1,99 +1,229 @@
 ---
-// Pricing.astro
-const plans = [
-  {
-    name: "Básico",
-    price: "$490",
-    period: "/mes",
-    description: "Ideal para pequeños negocios emprendiendo.",
-    features: [
-      "Punto de Venta Básico",
-      "Inventario hasta 1,000 productos",
-      "Facturación SAT (Limitada)",
-      "1 Usuario / 1 Caja",
-      "Soporte por email"
-    ],
-    buttonText: "Elegir Básico",
-    isPopular: false
-  },
-  {
-    name: "Pro",
-    price: "$890",
-    period: "/mes",
-    description: "Para negocios en crecimiento que necesitan más poder.",
-    features: [
-      "Todo lo del Básico",
-      "Modo Restaurante y Retail",
-      "Facturación SAT Ilimitada",
-      "Roles y Permisos Avanzados",
-      "Múltiples sucursales (hasta 3)"
-    ],
-    buttonText: "Comenzar Prueba Gratis",
-    isPopular: true
-  },
-  {
-    name: "Premium",
-    price: "$1,490",
-    period: "/mes",
-    description: "Para cadenas y franquicias establecidas.",
-    features: [
-      "Todo lo del plan Pro",
-      "Sucursales y Cajas ilimitadas",
-      "Gestión B2B (CXP y Proveedores)",
-      "Dashboard Corporativo y Logs",
-      "Soporte Prioritario 24/7"
-    ],
-    buttonText: "Contactar Ventas",
-    isPopular: false
+// Pricing.astro - Planes dinámicos desde TPV SaaS
+let plans = [];
+let fetchSuccess = false;
+
+// URL base del TPV SaaS configurable por variable de entorno (para producción y desarrollo)
+const SAAS_URL = (import.meta.env.PUBLIC_SAAS_URL || 'http://localhost/tpv-saas/public').replace(/\/$/, '');
+const API_URL = `${SAAS_URL}/planes-publicos`;
+
+try {
+  const response = await fetch(API_URL);
+  if (response.ok) {
+    const rawPlans = await response.json();
+    // Encontrar el único índice del plan recomendado (prioriza 'profesional'/'pro', de lo contrario el segundo plan)
+    const foundPopularIndex = rawPlans.findIndex(p => p.slug === 'profesional' || p.slug === 'pro');
+    const targetPopularIndex = foundPopularIndex !== -1 ? foundPopularIndex : (rawPlans.length > 1 ? 1 : 0);
+
+    plans = rawPlans.map((plan, index) => {
+      const isPopular = index === targetPopularIndex;
+      const monthlyVal = parseFloat(plan.precio_mensual || 0);
+      const annualVal = monthlyVal * 12 * 0.83; // Precio total del año con 17% de descuento
+      return {
+        id: plan.id,
+        name: plan.nombre,
+        monthlyPrice: `$${monthlyVal.toFixed(2)}`,
+        annualPrice: `$${annualVal.toFixed(2)}`,
+        period: "/mes",
+        description: plan.descripcion || "Acceso a módulos esenciales para la operación de tu negocio.",
+        features: plan.modulos ? plan.modulos.map(m => m.nombre) : [],
+        isPopular: isPopular,
+        slug: plan.slug
+      };
+    });
+    fetchSuccess = true;
   }
-];
+} catch (e) {
+  console.warn("No se pudo conectar a la API del TPV SaaS. Usando planes por defecto.");
+}
+
+// Fallback estático en caso de que la API no responda en desarrollo offline
+if (!fetchSuccess || plans.length === 0) {
+  plans = [
+    {
+      name: "Plan Demo",
+      monthlyPrice: "$0.00",
+      annualPrice: "$0.00",
+      period: "/mes",
+      description: "Plan demostrativo con acceso exclusivo a Ventas y Productos con límites de uso.",
+      features: [
+        "Autenticación", "Categorías", "Clientes", "Configuración", 
+        "Dashboard", "Métodos de Pago", "Productos", "Roles y Permisos", 
+        "Sucursales", "Turnos", "Unidades de Medida", "Usuarios", "Ventas"
+      ],
+      isPopular: false,
+      slug: "demo"
+    },
+    {
+      name: "Plan Básico",
+      monthlyPrice: "$10.00",
+      annualPrice: "$99.60",
+      period: "/mes",
+      description: "Para emprendimientos pequeños. Incluye catálogos esenciales y operación básica.",
+      features: [
+        "Auditoría", "Autenticación", "Categorías", "Clientes", "Configuración",
+        "Dashboard", "Métodos de Pago", "Productos", "Roles y Permisos",
+        "Sucursales", "Turnos", "Usuarios", "Ventas"
+      ],
+      isPopular: false,
+      slug: "basico"
+    },
+    {
+      name: "Plan Profesional",
+      monthlyPrice: "$10.00",
+      annualPrice: "$99.60",
+      period: "/mes",
+      description: "Para medianos negocios. Incluye inventario completo, facturación y reportes avanzados.",
+      features: [
+        "Cotizaciones", "Auditoría", "Autenticación", "Categorías", "Clientes",
+        "Configuración", "Cortes Parciales", "Créditos / Apartados", "Cuentas por Pagar",
+        "Dashboard", "Datos Fiscales", "Departamentos", "Empleados", "Facturación CFDI",
+        "Ingredientes", "Mesas", "Métodos de Pago", "Logs de Productos", "Órdenes de Compra",
+        "Permisos por Rol", "Productos", "Proveedores"
+      ],
+      isPopular: true,
+      slug: "profesional"
+    }
+  ];
+}
 ---
 
-<section id="precios" class="py-24 bg-white">
+<section id="precios" class="py-24 bg-slate-900 text-white">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center max-w-3xl mx-auto mb-16">
-      <h2 class="text-primary font-bold tracking-wide uppercase text-sm mb-3">Planes y Precios</h2>
-      <p class="text-3xl md:text-4xl font-black text-secondary leading-tight mb-4">Elige el plan ideal para tu negocio</p>
-      <p class="text-lg text-secondary/70">Sin contratos forzosos ni letras pequeñas. Cambia o cancela cuando quieras.</p>
+      <h2 class="text-primary font-bold tracking-wider uppercase text-sm mb-3">PLANES Y PRECIOS</h2>
+      <p class="text-3xl md:text-5xl font-black tracking-tight text-white mb-4">Planes que crecen contigo</p>
+      <p class="text-lg text-slate-400 mb-8">Sin contratos forzosos ni letras pequeñas. Cambia o cancela cuando quieras.</p>
+      
+      <!-- Toggle Mensual / Anual -->
+      <div class="inline-flex items-center justify-center gap-3">
+        <span id="label-mensual" class="text-sm font-semibold text-white transition-colors">Mensual</span>
+        <button 
+          id="billing-toggle" 
+          type="button" 
+          role="switch"
+          aria-checked="false"
+          class="relative inline-flex h-7 w-14 flex-shrink-0 cursor-pointer rounded-full bg-slate-800 p-1 transition-colors duration-200 ease-in-out border border-slate-700 focus:outline-none"
+        >
+          <span 
+            id="toggle-dot" 
+            class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-primary shadow transition duration-200 ease-in-out translate-x-0"
+          ></span>
+        </button>
+        <span id="label-anual" class="text-sm font-semibold text-slate-400 transition-colors">
+          Anual <span class="text-primary font-bold">(-17%)</span>
+        </span>
+      </div>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-8 items-center max-w-6xl mx-auto">
+    <div class="grid md:grid-cols-3 gap-8 items-stretch max-w-6xl mx-auto">
       {plans.map((plan) => (
-        <div class={`rounded-3xl p-8 transition-transform duration-300 hover:-translate-y-2 ${plan.isPopular ? 'bg-secondary text-white transform scale-105 shadow-2xl relative' : 'bg-bg-alt/20 text-secondary border border-bg-alt hover:shadow-xl'}`}>
+        <div 
+          data-monthly-price={plan.monthlyPrice}
+          data-annual-price={plan.annualPrice}
+          class={`rounded-2xl p-7 flex flex-col justify-between transition-all duration-300 ${plan.isPopular ? 'bg-slate-800/90 border-2 border-primary shadow-2xl shadow-primary/20 transform md:scale-105 relative' : 'bg-slate-800/50 border border-slate-700/80 hover:border-slate-600 hover:shadow-xl'}`}
+        >
           
           {plan.isPopular && (
-            <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 py-1 bg-primary text-white rounded-full text-xs font-bold uppercase tracking-wider shadow-lg">
-              Más Popular
+            <div class="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-primary text-white font-extrabold text-xs uppercase tracking-widest rounded-full shadow-lg">
+              Recomendado
             </div>
           )}
 
-          <div class="mb-8">
-            <h3 class={`text-2xl font-bold mb-2 ${plan.isPopular ? 'text-white' : 'text-secondary'}`}>{plan.name}</h3>
-            <p class={plan.isPopular ? 'text-white/70 text-sm' : 'text-secondary/70 text-sm'}>{plan.description}</p>
-          </div>
-          
-          <div class="mb-8">
-            <span class="text-4xl font-black tracking-tight">{plan.price}</span>
-            <span class={plan.isPopular ? 'text-white/60 font-medium' : 'text-secondary/50 font-medium'}>{plan.period}</span>
+          <div>
+            <!-- Encabezado del Plan -->
+            <div class="mb-5">
+              <h3 class="text-2xl font-bold text-white mb-2">{plan.name}</h3>
+              <p class="text-slate-400 text-xs leading-relaxed min-h-[36px]">{plan.description}</p>
+            </div>
+            
+            <!-- Precio -->
+            <div class="mb-6 pb-6 border-b border-slate-700/70">
+              <span class="plan-price-val text-4xl font-extrabold text-white tracking-tight">{plan.monthlyPrice}</span>
+              <span class="plan-period-val text-slate-400 font-medium text-sm"> {plan.period}</span>
+            </div>
+
+            <!-- Lista de Módulos (Estilo exacto al TPV SaaS) -->
+            <div class="mb-6">
+              <h4 class="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-4">MÓDULOS BASE INCLUIDOS:</h4>
+              <ul class="space-y-2.5 max-h-80 overflow-y-auto pr-2 text-xs scrollbar-thin scrollbar-thumb-slate-700">
+                {plan.features.map((feature) => (
+                  <li class="flex items-center gap-2.5 text-slate-300 font-medium">
+                    <div class="w-4 h-4 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                      <svg class="w-2.5 h-2.5 text-primary stroke-[3]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <span class="truncate">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
-          <ul class="space-y-4 mb-8">
-            {plan.features.map((feature) => (
-              <li class="flex items-center gap-3">
-                <svg class={`w-5 h-5 flex-shrink-0 ${plan.isPopular ? 'text-primary' : 'text-primary'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
-                <span class={plan.isPopular ? 'text-white/90' : 'text-secondary/80'}>{feature}</span>
-              </li>
-            ))}
-          </ul>
+          <!-- Botón de CTA -->
+          <div class="pt-4 mt-auto">
+            <a 
+              href={`${SAAS_URL}/registro`} 
+              class={`block w-full py-3.5 px-6 rounded-xl font-bold text-sm text-center transition-all duration-200 shadow-md ${
+                plan.isPopular 
+                  ? 'bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/30' 
+                  : 'bg-slate-700 hover:bg-slate-600 text-white border border-slate-600'
+              }`}
+            >
+              Comenzar Ahora
+            </a>
+          </div>
 
-          <a href="#" class={`block w-full py-4 px-6 rounded-full font-bold text-center transition-colors ${plan.isPopular ? 'bg-primary hover:bg-primary/90 text-white' : 'bg-white hover:bg-bg-alt text-secondary border border-secondary/20'}`}>
-            {plan.buttonText}
-          </a>
-          
         </div>
       ))}
     </div>
   </div>
 </section>
+
+<script>
+  const toggleBtn = document.getElementById('billing-toggle');
+  const toggleDot = document.getElementById('toggle-dot');
+  const labelMensual = document.getElementById('label-mensual');
+  const labelAnual = document.getElementById('label-anual');
+  const priceElements = document.querySelectorAll('.plan-price-val');
+  const periodElements = document.querySelectorAll('.plan-period-val');
+
+  let isAnnual = false;
+
+  toggleBtn?.addEventListener('click', () => {
+    isAnnual = !isAnnual;
+    toggleBtn.setAttribute('aria-checked', isAnnual.toString());
+
+    if (isAnnual) {
+      toggleDot?.classList.remove('translate-x-0');
+      toggleDot?.classList.add('translate-x-7');
+      labelMensual?.classList.remove('text-white');
+      labelMensual?.classList.add('text-slate-400');
+      labelAnual?.classList.remove('text-slate-400');
+      labelAnual?.classList.add('text-white');
+    } else {
+      toggleDot?.classList.remove('translate-x-7');
+      toggleDot?.classList.add('translate-x-0');
+      labelMensual?.classList.remove('text-slate-400');
+      labelMensual?.classList.add('text-white');
+      labelAnual?.classList.remove('text-white');
+      labelAnual?.classList.add('text-slate-400');
+    }
+
+    priceElements.forEach((el) => {
+      const card = el.closest('[data-monthly-price]');
+      if (card) {
+        const monthly = card.getAttribute('data-monthly-price');
+        const annual = card.getAttribute('data-annual-price');
+        el.textContent = isAnnual ? (annual || '') : (monthly || '');
+      }
+    });
+
+    periodElements.forEach((el) => {
+      el.textContent = isAnnual ? ' /año' : ' /mes';
+    });
+  });
+</script>
+
+

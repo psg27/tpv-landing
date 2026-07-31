@@ -1,0 +1,108 @@
+---
+// Addons.astro - Sección de Mejoras e Integraciones (Add-ons)
+const addons = [
+  {
+    title: "Soporte y Puesta en Marcha",
+    description: "Acompañamiento personalizado para configurar tu sistema desde cero y capacitar a tu equipo.",
+    price: "$2,000",
+    period: "/mes",
+    badge: "OPCIONAL",
+    badgeType: "default",
+    icon: `<svg class="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>`
+  },
+  {
+    title: "Portal de Facturación de Tickets",
+    description: "Permite a tus clientes facturar sus tickets de compra en línea, de forma autónoma.",
+    price: "+$250",
+    period: "/mes",
+    badge: null,
+    icon: `<svg class="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>`
+  },
+  {
+    title: "App Móvil B2C Clientes",
+    description: "App para que tus clientes consulten historial, puntos de lealtad y realicen pedidos.",
+    price: "+$250",
+    period: "/mes",
+    badge: null,
+    icon: `<svg class="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>`
+  },
+  {
+    title: "Ecommerce WEB",
+    description: "Tienda en línea integrada con tu inventario y ventas en tiempo real.",
+    price: "+$500",
+    period: "/mes",
+    badge: "POPULAR",
+    badgeType: "popular",
+    icon: `<svg class="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 100 4 2 2 0 000-4z" /></svg>`
+  },
+  {
+    title: "Pagos en Línea (Mercado Pago / PayPal)",
+    description: "Acepta cobros con tarjetas de crédito, débito y pasarelas de pago de forma segura.",
+    price: "+$1,500",
+    period: "pago único",
+    badge: "PAGO ÚNICO",
+    badgeType: "once",
+    icon: `<svg class="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>`
+  },
+  {
+    title: "Tienda Mercado Libre",
+    description: "Sincroniza tus productos e inventario con tu tienda Mercado Libre.",
+    price: "+$2,000",
+    period: "pago único",
+    badge: "PAGO ÚNICO",
+    badgeType: "once",
+    icon: `<svg class="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" /></svg>`
+  }
+];
+---
+
+<section id="add-ons" class="py-20 bg-slate-950 text-white border-t border-slate-800/60">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Encabezado de Sección -->
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <h2 class="text-primary font-bold tracking-wider uppercase text-xs sm:text-sm mb-3">MEJORAS E INTEGRACIONES</h2>
+      <p class="text-3xl md:text-5xl font-black tracking-tight text-white mb-4">Potencia tu sistema con add-ons</p>
+      <p class="text-lg text-slate-400">Agrega funcionalidades extra a tu plan según las necesidades de tu negocio.</p>
+    </div>
+
+    <!-- Grid de Add-ons -->
+    <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+      {addons.map((addon) => (
+        <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-slate-700 transition-all duration-300 relative group shadow-lg">
+          
+          <!-- Header de Card con Badge opcional -->
+          <div>
+            <div class="flex items-center justify-between mb-5">
+              <div class="w-10 h-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0" set:html={addon.icon} />
+              
+              {addon.badge && (
+                <span class={`text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider ${
+                  addon.badgeType === 'popular'
+                    ? 'bg-primary/20 text-primary border border-primary/30'
+                    : addon.badgeType === 'once'
+                    ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30'
+                    : 'bg-slate-800 text-slate-300 border border-slate-700'
+                }`}>
+                  {addon.badge}
+                </span>
+              )}
+            </div>
+
+            <!-- Título y Descripción -->
+            <h3 class="text-lg font-bold text-white mb-2 group-hover:text-primary transition-colors">{addon.title}</h3>
+            <p class="text-slate-400 text-xs leading-relaxed mb-6">{addon.description}</p>
+          </div>
+
+          <!-- Precio -->
+          <div class="pt-4 border-t border-slate-800/80 flex items-baseline gap-1">
+            <span class="text-2xl font-black text-white tracking-tight">{addon.price}</span>
+            <span class="text-slate-400 text-xs font-medium">{addon.period}</span>
+          </div>
+
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
