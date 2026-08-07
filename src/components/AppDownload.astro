@@ -1,0 +1,98 @@
+---
+// AppDownload.astro — Android app availability banner
+import { Image } from 'astro:assets';
+import qrApp from '../assets/qrapp.png';
+---
+
+<section id="app-movil" class="relative pt-20 pb-6 overflow-hidden">
+  <!-- Background glow -->
+  <div class="absolute inset-0 z-0">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-primary/10 rounded-full blur-3xl"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="app-download-banner">
+      <div class="app-download-glow"></div>
+      <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+        <div class="flex flex-col md:flex-row items-center md:items-start gap-5 text-center md:text-left">
+          <div class="w-16 h-16 rounded-2xl bg-primary/20 flex items-center justify-center flex-shrink-0">
+            <svg class="w-8 h-8 text-primary" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.6 9.48l1.84-3.18c.16-.31.04-.69-.26-.85-.29-.15-.65-.06-.83.22l-1.88 3.24c-2.86-1.21-6.08-1.21-8.94 0L5.65 5.67c-.19-.29-.58-.38-.87-.2-.28.18-.37.54-.22.83L6.4 9.48C3.3 11.25 1.28 14.44 1 18h22c-.28-3.56-2.3-6.75-5.4-8.52zM7 15.25c-.69 0-1.25-.56-1.25-1.25s.56-1.25 1.25-1.25 1.25.56 1.25 1.25-.56 1.25-1.25 1.25zm10 0c-.69 0-1.25-.56-1.25-1.25s.56-1.25 1.25-1.25 1.25.56 1.25 1.25-.56 1.25-1.25 1.25z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary font-semibold text-xs mb-3">
+              <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+              </span>
+              Ya disponible
+            </div>
+            <h3 class="text-xl md:text-2xl font-bold text-secondary mb-1">
+              Lleva POS EXPRESS contigo, <span class="text-primary">ahora en Android</span>
+            </h3>
+            <p class="text-secondary/60 text-sm md:text-base max-w-lg">
+              Gestiona ventas, inventario y consulta tu negocio desde tu celular. Descarga la app oficial gratis en Google Play.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex-shrink-0 flex items-center gap-4">
+          <a
+            href="https://play.google.com/store/apps/details?id=com.isotech.posexpress&hl=es_MX"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-3 px-6 py-3.5 bg-black hover:bg-black/80 text-white rounded-2xl transition-all transform hover:-translate-y-1 shadow-lg shadow-black/30 border border-white/10"
+          >
+            <svg class="w-8 h-8 shrink-0" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+              <path d="M325.3 234.3L104.7 13.7c-6.6-6.6-17.3-6.6-23.9 0L69.4 25.1c-3.3 3.3-5.1 7.6-5.1 12.2v437.4c0 4.6 1.9 8.9 5.1 12.2l11.4 11.4c6.6 6.6 17.3 6.6 23.9 0l220.6-220.6c6.6-6.6 6.6-17.3 0-23.9z" fill="#00d2ff"/>
+              <path d="M373.3 186.3L104.7 25.1 84.4 45.4l288.9 140.9z" fill="#3be0ff"/>
+              <path d="M373.3 325.7L104.7 486.9l-19.7-20.3 288-140.9z" fill="#00c1ff"/>
+              <path d="M373.3 186.3l84 41c9.6 4.7 15.7 14.4 15.7 25.1s-6 20.4-15.7 25.1l-84 41-52.9-52.6z" fill="#ffce00"/>
+            </svg>
+            <span class="text-left leading-tight">
+              <span class="block text-[11px] text-white/70">Disponible en</span>
+              <span class="block text-lg font-bold -mt-0.5">Google Play</span>
+            </span>
+          </a>
+
+          <div class="hidden sm:flex flex-col items-center gap-2">
+            <div class="p-3 bg-white rounded-xl shadow-lg">
+              <Image src={qrApp} alt="Código QR para descargar POS EXPRESS en Google Play" class="w-36 h-36" />
+            </div>
+            <span class="text-secondary/50 text-[11px] font-medium">Escanéalo con tu cámara</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .app-download-banner {
+    position: relative;
+    padding: 2.5rem;
+    border-radius: 1.5rem;
+    background: rgba(17, 17, 17, 0.8);
+    border: 1px solid rgba(242, 106, 33, 0.2);
+    overflow: hidden;
+    backdrop-filter: blur(12px);
+  }
+
+  .app-download-glow {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 100%;
+    background: radial-gradient(ellipse at center right, rgba(242, 106, 33, 0.12), transparent 70%);
+    pointer-events: none;
+  }
+
+  @media (max-width: 640px) {
+    .app-download-banner {
+      padding: 1.75rem;
+      text-align: center;
+    }
+  }
+</style>
